@@ -1,6 +1,7 @@
 
 export const texts = {
     es: {
+        profecional: "Desarrollador Full Stack",
         home: "Sobre Mí",
         projects: "Proyectos",
         aboutMe : 'Desarrollador Full Stack apasionado por crear experiencias web innovadoras y escalables. Combino creatividad técnica con sólidos principios de diseño para transformar ideas ambiciosas en soluciones digitales que cautivan y funcionan.',
@@ -20,6 +21,7 @@ export const texts = {
         placeHolderMessage : 'Tu mensaje'
     },
     en: {
+        profecional: "Full Stack Developer",
         home: "About me",
         projects: "Projects",
         aboutMe : 'Full Stack Developer passionate about creating innovative and scalable web experiences. I combine technical creativity with solid design principles to transform ambitious ideas into captivating and functional digital solutions.',

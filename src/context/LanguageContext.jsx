@@ -6,7 +6,7 @@ const LenguageContext = createContext();
 // Proveedor del contexto
 export const LenguageProvider = ({ children }) => {
 
-    const savedLanguage = localStorage.getItem('language') || 'en'; 
+    const savedLanguage = localStorage.getItem('language') || 'es'; 
     const [lenguage, setLenguage] = useState(savedLanguage);
   
     // Cambiar idioma y guardarlo en localStorage
