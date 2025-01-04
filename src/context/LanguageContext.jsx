@@ -11,7 +11,6 @@ export const LenguageProvider = ({ children }) => {
     const [ lenguage, setLenguage ] = useState(savedLanguage);
 
     const changeLenguage = (newLenguage) => {
-x
       localStorage.setItem('language', newLenguage); 
       setLenguage(newLenguage);
       document.documentElement.lang = newLenguage;
