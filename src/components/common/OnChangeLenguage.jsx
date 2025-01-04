@@ -7,12 +7,7 @@ export const OnChangeLenguage = () => {
   const { changeLenguage, texts, lenguage } = useLenguage();
   const isEnglish = lenguage === "en";
 
-  const handleOnClick = () => {
-    changeLenguage(isEnglish ? "es" : "en");
-    window.onload.reload();
-  };
-
-
+  const handleOnClick = () => changeLenguage(isEnglish ? "es" : "en");
 
   return (
     <motion.button
