@@ -54,8 +54,8 @@ export const ContactSection = () => {
             </div>
             <div>
               <input
-                type={texts.placeHolderEmail}
-                placeholder="Tu correo electrónico"
+                type='email'
+                placeholder={texts.placeHolderEmail}
                 className="w-full p-3 border border-gray-300 dark:border-blue-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 dark:bg-blue-800 dark:text-white transition-all transform hover:scale-105 motion-safe:animate__fadeIn animate__delay-2s"
               />
             </div>

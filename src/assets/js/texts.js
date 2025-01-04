@@ -18,7 +18,14 @@ export const texts = {
         sendAMessage : 'Enviar mensaje',
         placeHolderName : 'Tu nombre',
         placeHolderEmail : 'Tu correo electrónico', 
-        placeHolderMessage : 'Tu mensaje'
+        placeHolderMessage : 'Tu mensaje',
+        changeLanguage: 'English',
+        myProcessJob: 'Mi Proceso de Trabajo',
+        myProcessJobDescription : `Un enfoque sistemático y flexible para entregar soluciones de calidad, combinando metodologías ágiles con mejores prácticas de desarrollo.`,
+        methodologyTitle : 'Metodología de Trabajo',
+        methodologyDescription : `Mi enfoque combina las mejores prácticas de metodologías ágiles con un fuerte énfasis en la calidad y la comunicación continua. Priorizo la entrega de valor temprano y la adaptabilidad a cambios, manteniendo siempre altos estándares de calidad en el código y la documentación.`,
+        philosophyTitle : 'Filosofía de Colaboración',
+        philosophyDescription : `Creo en la importancia del trabajo en equipo y la comunicación transparente. Cada proyecto es una oportunidad para crear valor conjunto, compartir  conocimientos y crecer profesionalmente, manteniendo siempre el foco en los objetivos del cliente.`,
     },
     en: {
         profecional: "Full Stack Developer",
@@ -38,6 +45,14 @@ export const texts = {
         sendAMessage : 'Send a message',
         placeHolderName : 'Your name',
         placeHolderEmail : 'Your email',
-        placeHolderMessage : 'Your message'
+        placeHolderMessage : 'Your message',
+        changeLanguage: 'Español',
+        myProcessJob: 'My Work Process',
+        myProcessJobDescription : `A systematic and flexible approach to delivering quality solutions, combining agile methodologies with best development practices.`,
+        methodologyTitle : 'Work Methodology',
+        methodologyDescription : `My approach combines the best practices of agile methodologies with a strong emphasis on quality and continuous communication. I prioritize early value delivery and adaptability to changes, always maintaining high standards of quality in code and documentation.`,
+        philosophyTitle : 'Collaboration Philosophy',
+        philosophyDescription : `I believe in the importance of teamwork and transparent communication. Each project is an opportunity to create joint value, share knowledge, and grow professionally, always keeping the focus on the client's objectives.`,
+        
     }
 }

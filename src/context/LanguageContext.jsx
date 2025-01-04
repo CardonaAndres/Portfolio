@@ -6,13 +6,22 @@ const LenguageContext = createContext();
 // Proveedor del contexto
 export const LenguageProvider = ({ children }) => {
 
-    const savedLanguage = localStorage.getItem('language') || 'es'; 
-    const [lenguage, setLenguage] = useState(savedLanguage);
-  
-    // Cambiar idioma y guardarlo en localStorage
-    const changeLenguage = (nuevoLenguage) => {
-      setLenguage(nuevoLenguage);
-      localStorage.setItem('language', nuevoLenguage); // Guarda el idioma en localStorage
+    localStorage.setItem('language', 'en'); // Idioma por defecto (español)
+    const savedLanguage = localStorage.getItem('language'); 
+    const [ lenguage, setLenguage ] = useState(savedLanguage);
+
+    const changeLenguage = (newLenguage) => {
+x
+      localStorage.setItem('language', newLenguage); 
+      setLenguage(newLenguage);
+      document.documentElement.lang = newLenguage;
+
+      const titles = {
+        es: 'Andrés Cardona - Desarrollador de Software FullStack',
+        en: 'Andrés Cardona - Full Stack Developer',
+      };
+
+      document.title = titles[newLenguage] || titles['en'];
     };
   
     return (

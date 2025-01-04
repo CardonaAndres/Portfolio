@@ -1,8 +1,8 @@
 import '../../assets/css/hero.css';
 import fotoHV from '../../assets/imgs/FotoHV.jpg';
-import { HeroBackground } from "../hero_section/HeroBackground";
-import { HeroLeftColumn } from "../hero_section/HeroLeftColumn";
-import { HeroRightColumn } from "../hero_section/HeroRightColumn";
+import { HeroBackground } from "../heroSection/HeroBackground";
+import { HeroLeftColumn } from "../heroSection/HeroLeftColumn";
+import { HeroRightColumn } from "../heroSection/HeroRightColumn";
 import { useLenguage } from "../../context/LanguageContext";
 
 export const HeroSection = () => {

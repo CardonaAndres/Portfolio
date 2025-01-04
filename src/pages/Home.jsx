@@ -5,6 +5,7 @@ import { SkilSection } from '../components/Home/SkillSection';
 import { ContactSection } from '../components/Home/ContactSection';
 import { FooterSection } from '../components/Home/FooterSection';
 import { useLenguage } from '../context/LanguageContext';
+import { WorkProcessSection } from '../components/Home/WorkProcessSection';
 
 export const Home = () => {
   const { texts } = useLenguage();
@@ -18,6 +19,9 @@ export const Home = () => {
         </div>
         <div id={texts.projects}>
           <ProyectSection />
+        </div>
+        <div>
+          <WorkProcessSection />
         </div>
         <div id={texts.skills}>
           <SkilSection />

@@ -4,7 +4,7 @@ import { useLenguage } from "../../context/LanguageContext";
 
 export const SkilSection = () => {
 
-    const { texts } = useLenguage()
+    const { texts } = useLenguage();
 
     const skills = [
         "JavaScript", "React", "Node.js", "Express", "Python", "FastAPI", "TailwindCSS", 

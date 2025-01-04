@@ -3,13 +3,14 @@ import { NavItem } from "../common/NavItem";
 import { Menu, X, User, Code, Briefcase, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLenguage } from "../../context/LanguageContext";
+import { OnChangeLenguage } from "../common/OnChangeLenguage.jsx";
 
 export const Navbar = () => {
 
-  const { texts } = useLenguage();
+  const { texts, changeLenguage } = useLenguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const links = [ texts.home, texts.projects, texts.skills, texts.contact ];
+  const links = [ texts.home, texts.projects, texts.skills, texts.contact ];  
 
   return (
     <nav className="bg-white/80 dark:bg-blue-900/90 backdrop-blur-sm fixed w-full z-50 shadow-lg">
@@ -32,24 +33,19 @@ export const Navbar = () => {
                   whileHover={{ scale: 1.1, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <NavItem
-                    icon={
-                      index === 0 ? (
-                        <User size={18} />
-                      ) : index === 1 ? (
-                        <Code size={18} />
-                      ) : index === 2 ? (
-                        <Briefcase size={18} />
-                      ) : (
-                        <MessageSquare size={18} />
-                      )
-                    }
-                    text={text}
-                    href={text}
+                  <NavItem icon={ 
+                      index === 0 ? ( <User size={18} /> ) : index === 1 ? 
+                      ( <Code size={18} /> ) : index === 2 ? ( <Briefcase size={18} />) : 
+                        ( <MessageSquare size={18} /> )
+                    } text={text} href={text}
                   />
+                
                 </motion.div>
               )
-            )}
+            )} 
+              <motion.div whileHover={{ scale: 1.1, rotate: 2 }} whileTap={{ scale: 0.95 }} >    
+                <OnChangeLenguage />       
+              </motion.div>       
           </div>
 
           {/* Mobile Menu Button */}
@@ -87,24 +83,18 @@ export const Navbar = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <NavItem
-                    icon={
-                      index === 0 ? (
-                        <User size={18} />
-                      ) : index === 1 ? (
-                        <Code size={18} />
-                      ) : index === 2 ? (
-                        <Briefcase size={18} />
-                      ) : (
-                        <MessageSquare size={18} />
-                      )
-                    }
-                    text={text}
-                    href={text}
+                  <NavItem icon={ 
+                      index === 0 ? ( <User size={18} /> ) : index === 1 ? 
+                      (<Code size={18} /> ) : index === 2 ? ( <Briefcase size={18} />) : 
+                        ( <MessageSquare size={18} /> )
+                    } text={text} href={text}
                   />
                 </motion.div>
               )
             )}
+              <motion.div whileHover={{ scale: 1.1, rotate: 2 }} whileTap={{ scale: 0.95 }} >    
+                <OnChangeLenguage />       
+              </motion.div> 
           </div>
         )}
       </motion.div>
