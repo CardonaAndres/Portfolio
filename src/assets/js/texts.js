@@ -1,4 +1,3 @@
-
 export const texts = {
     es: {
         profecional: "Desarrollador Full Stack",
@@ -14,11 +13,27 @@ export const texts = {
         footerEnd : 'Hecho con ♥ y React',
         viewMore : 'Ver más',
         myProjects: 'Mis Proyectos',
-        sendMeAMessage: 'Envíame un mensaje',
-        sendAMessage : 'Enviar mensaje',
-        placeHolderName : 'Tu nombre',
-        placeHolderEmail : 'Tu correo electrónico', 
-        placeHolderMessage : 'Tu mensaje',
+        contactSection : {
+            sendMeAMessage: 'Envíame un mensaje',
+            placeHolderName : 'Tu nombre',
+            placeHolderEmail : 'Tu correo electrónico', 
+            placeHolderMessage : 'Tu mensaje',
+            name : {
+                required : 'El nombre es requerido',
+                minLength : 'El nombre debe tener al menos 2 caracteres',
+                pattern : 'Solo se permiten letras y espacios'
+            }, 
+            email : {
+                required : 'El email es requerido',
+                pattern : 'Email inválido'
+            },
+            message : {
+                required : 'El mensaje es requerido',
+                minLength : 'El mensaje debe tener al menos 10 caracteres',
+                maxLength : 'El mensaje no puede exceder los 500 caracteres'
+            }
+        },
+
         changeLanguage: 'English',
         myProcessJob: 'Mi Proceso de Trabajo',
         myProcessJobDescription : `Un enfoque sistemático y flexible para entregar soluciones de calidad, combinando metodologías ágiles con mejores prácticas de desarrollo.`,
@@ -41,11 +56,26 @@ export const texts = {
         footerEnd : 'Made with ♥ and React',
         viewMore : 'View more',
         myProjects: 'My Projects',
-        sendMeAMessage: 'Send me a message',
-        sendAMessage : 'Send a message',
-        placeHolderName : 'Your name',
-        placeHolderEmail : 'Your email',
-        placeHolderMessage : 'Your message',
+        contactSection : {
+            sendMeAMessage: 'Send me a message',
+            placeHolderName : 'Your name',
+            placeHolderEmail : 'Your email',
+            placeHolderMessage : 'Your message',
+            name : {
+                required : 'The name is required',
+                minLength : 'The name must be at least 2 characters',
+                pattern : 'Only letters and spaces are allowed'
+            }, 
+            email : {
+                required : 'Email is required',
+                pattern : 'Invalid email'
+            }, 
+            message : {
+                required : 'The menssage is required',
+                minLength : 'The message must be at least 10 characters',
+                maxLength : 'The message cannot exceed 500 characters'
+            }
+        },
         changeLanguage: 'Español',
         myProcessJob: 'My Work Process',
         myProcessJobDescription : `A systematic and flexible approach to delivering quality solutions, combining agile methodologies with best development practices.`,
