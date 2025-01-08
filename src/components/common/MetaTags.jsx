@@ -7,6 +7,7 @@ export const MetaTags = () => {
         <meta name="description" content="Hola, soy Andrés, un Desarrollador De Software apasionado por crear soluciones a los problemas del día a día. Explora mi portafolio para conocer mis proyectos, habilidades y experiencia." />
         <meta name="keywords" content="portafolio, Desarrollador De Software, desarrollador web, diseño, proyectos, Full Stack" />
         <meta name="author" content="Andrés Cardona" />
+        <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Mi Portafolio - Andrés Cardona" />
         <meta property="og:description" content="Descubre los proyectos y habilidades de Andrés, un desarrollador de software" />
         <meta property="og:type" content="website" />

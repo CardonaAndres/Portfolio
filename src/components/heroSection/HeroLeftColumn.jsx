@@ -13,20 +13,19 @@ export const HeroLeftColumn = ({ texts }) => (
         {texts.profecional}
     </h2>
 
-    <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+    <div className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
       {texts.title}{" "}
       <span className="text-blue-600 dark:text-blue-400">
         Andrés
       </span>
-    </h1>
+    </div>
 
     <p className="text-lg text-white/90 leading-relaxed max-w-xl">
       {texts.aboutMe}
     </p>
 
     <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center mt-12">
-      <motion.a
-        href="mailto:11cardona31@gmail.com"
+      <motion.span
         className="group flex items-center gap-3 text-white/90 hover:text-white transition-colors"
         whileHover={{ scale: 1.02 }}
       >
@@ -34,7 +33,7 @@ export const HeroLeftColumn = ({ texts }) => (
           <Mail className="w-5 h-5" />
         </div>
         <span className="font-medium">11cardona31@gmail.com</span>
-      </motion.a>
+      </motion.span>
 
       <div className="flex gap-4">
         {[
@@ -46,6 +45,7 @@ export const HeroLeftColumn = ({ texts }) => (
             href={href}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Social media"
             className="p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
             whileHover={{ scale: 1.05 }}
           >
