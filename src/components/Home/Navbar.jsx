@@ -16,14 +16,14 @@ export const Navbar = () => {
     <nav className="bg-white/80 dark:bg-blue-900/90 backdrop-blur-sm fixed w-full z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <motion.span
+          <motion.h1
             className="text-2xl font-bold text-blue-600 dark:text-white"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             Andrés Cardona
-          </motion.span>
+          </motion.h1>
 
           <div className="hidden md:flex space-x-8">
             {links.map(
