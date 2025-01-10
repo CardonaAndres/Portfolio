@@ -20,13 +20,13 @@ export const successAlert = () => {
 
 }
 
-export const errorAlert = () => {
+export const errorAlert = (message = 'Algo salió mal, por favor intenta de nuevo.') => {
     const MySwal = withReactContent(Swal);
   
     MySwal.fire({
       icon: 'error',
       title: '¡Ups!',
-      text: 'Algo salió mal, por favor intenta de nuevo.',
+      text: message,
       background: '#B91C1C', // Rojo oscuro
       color: '#ffffff', // Blanco
       confirmButtonColor: '#EF4444', // Rojo claro

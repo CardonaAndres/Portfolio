@@ -1,4 +1,5 @@
 import reservifyIMG from '../assets/imgs/ReservifyIMG.png';
+import UrbanWheels from '../assets/imgs/UrbanWheels.webp';
 import { useLenguage } from '../context/LanguageContext';
 
 export const useProjects = () => {
@@ -10,23 +11,16 @@ export const useProjects = () => {
         {
             title: "Reservify",
             description: `${ isEnglish ? 'A reservation system for restaurants, with a simple and intuitive interface for both the client and the administrator.' : 'Un sistema de reservas para restaurantes, con una interfaz simple e intuitiva tanto para el cliente como para el administrador.' }`,
-            tags: ["React", "TailwindCSS", "Python", "FastAPI", "MySql"],
+            tags: ["JavaScript", "React", "TailwindCSS", "Python", "FastAPI", "MySql", "Docker"],
             image: reservifyIMG,
             link : 'https://reservify-front.vercel.app'
         },
         {
-            title: "Reservify",
-            description: `${ isEnglish ? 'A reservation system for restaurants, with a simple and intuitive interface for both the client and the administrator.' : 'Un sistema de reservas para restaurantes, con una interfaz simple e intuitiva tanto para el cliente como para el administrador.' }`,
-            tags: ["React", "TailwindCSS", "Python", "FastAPI", "MySql"],
-            image: reservifyIMG,
-            link : 'https://reservify-front.vercel.app'
-        },
-        {
-            title: "Reservify",
-            description: `${ isEnglish ? 'A reservation system for restaurants, with a simple and intuitive interface for both the client and the administrator.' : 'Un sistema de reservas para restaurantes, con una interfaz simple e intuitiva tanto para el cliente como para el administrador.' }`,
-            tags: ["React", "TailwindCSS", "Python", "FastAPI", "MySql"],
-            image: reservifyIMG,
-            link : 'https://reservify-front.vercel.app'
+            title: "UrbanWheels",
+            description: `${ isEnglish ? 'An advanced system in development for the comprehensive management of vehicle fleets, reservations, and customers, optimizing operational efficiency, enhancing user experience, and facilitating strategic decision-making.' : 'Un sistema avanzado en desarrollo para la gestión integral de la flota de vehículos, las reservas y los clientes, optimizando la eficiencia operativa, mejorando la experiencia del usuario y facilitando la toma de decisiones estratégicas.' }`,
+            tags: ["JavaScript","React", "TailwindCSS", "Node JS", "ExpressJS", "MySql"],
+            image: UrbanWheels,
+            link : 'https://github.com/CardonaAndres/UrbanWheelsClient'
         },
     ];
 

@@ -18,11 +18,8 @@ export const HeroRightColumn = ({ fotoHV }) => (
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
       >
-        <img
-          src={fotoHV}
-          alt="Andrés Cardona"
-          className="w-full h-full object-cover"
-        />
+        <img src={fotoHV} alt="Andrés Cardona" className="w-full h-full object-cover"
+          loading='lazy' width='320' height='320'/>
       </motion.div>
     </div>
   </motion.div>
