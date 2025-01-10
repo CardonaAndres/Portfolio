@@ -1,5 +1,6 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Send, MessageCircle, AlertCircle } from 'lucide-react';
+import { Github, Linkedin, Mail, Send, AlertCircle } from 'lucide-react';
+import WhatsApp from '../../assets/svg/WhatsApp.svg';
 import { useLenguage } from '../../context/LanguageContext';
 import { useContactForm } from '../../hooks/useContactForm';
 
@@ -109,7 +110,7 @@ export const ContactSection = () => {
             <div className="flex gap-4 pt-4">
               <button type="button" onClick={handleSubmit(handleWhatsApp)}
                 className="flex-1 py-4 px-6 bg-green-500 hover:bg-green-600 text-white rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl">
-                <MessageCircle className="w-5 h-5" />
+                <img src={WhatsApp} alt="WhatsAppIcon" className="w-5 h-5" /> 
                 WhatsApp
               </button>
               <button type="button" onClick={handleSubmit(handleEmail)}
