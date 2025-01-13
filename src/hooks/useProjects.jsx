@@ -1,5 +1,6 @@
-import reservifyIMG from '../assets/imgs/ReservifyIMG.png';
+import reservifyIMG from '../assets/imgs/ReservifyIMG.webp';
 import UrbanWheels from '../assets/imgs/UrbanWheels.webp';
+import Spa from '../assets/imgs/Spa.webp'
 import { useLenguage } from '../context/LanguageContext';
 
 export const useProjects = () => {
@@ -21,6 +22,13 @@ export const useProjects = () => {
             tags: ["JavaScript","React", "TailwindCSS", "Node JS", "ExpressJS", "MySql"],
             image: UrbanWheels,
             link : 'https://github.com/CardonaAndres/UrbanWheelsClient'
+        },
+        {
+            title: `${ isEnglish ? 'Care and Harmony ' : 'Cuidado Y Armonía' }`,
+            description: `${ isEnglish ? 'A landing page for an emerging beauty salon, designed to boost its online visibility and increase sales. This page has been instrumental in connecting with more clients and providing them with an efficient and accessible online booking experience.' : 'Landing page para un salón de belleza emergente, diseñada para aumentar su visibilidad en línea y potenciar sus ventas. Esta página ha sido clave para conectar con más clientes y ofrecerles una experiencia de reserva en línea eficiente y accesible.' }`,
+            tags: ["JavaScript", "React", "TailwindCSS"],
+            image: Spa,
+            link : 'https://reservify-front.vercel.app'
         },
     ];
 

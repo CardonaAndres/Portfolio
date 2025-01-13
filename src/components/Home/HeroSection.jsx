@@ -1,5 +1,5 @@
 import '../../assets/css/hero.css';
-import fotoHV from '../../assets/imgs/FotoHV.jpg';
+import fotoHV from '../../assets/imgs/FotoHV.webp';
 import { HeroBackground } from "../heroSection/HeroBackground";
 import { HeroLeftColumn } from "../heroSection/HeroLeftColumn";
 import { HeroRightColumn } from "../heroSection/HeroRightColumn";
