@@ -10,6 +10,7 @@ export default defineConfig({
     react(),
     VitePluginSitemap({
       robotsTxt: '/public/robots.txt',
+      hostname : 'https://portfolio-cardonaandres-projects.vercel.app/'
     }),
   ],
 })
