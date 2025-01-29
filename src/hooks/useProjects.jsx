@@ -36,7 +36,7 @@ export const useProjects = () => {
             description: `${ isEnglish ? 'Complete and personalized advisory for your immigration processes in the USA, which led to a 45% increase in consultations after the website launch.' : 'Asesoría completa y personalizada para tus procesos migratorios en los EE.UU., lo que resultó en un aumento del 45% en las asesorías después del lanzamiento de la página web.' }`,
             tags: ["JavaScript", "React", "TailwindCSS"],
             image: NexoMigratorio,
-            link : 'https://nexo-migratorio-llc.vercel.app/'
+            link : 'https://www.nexomigratorio.com/'
         },
     ];
     
