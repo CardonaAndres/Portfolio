@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLenguage } from "../../context/LanguageContext";
 import { useProjects } from "../../hooks/useProjects";
 import { ProjectCard } from "../common/ProjectCard";
@@ -7,15 +7,14 @@ import { Pagination } from "../common/Pagination";
 export const ProjectSection = () => {
   const { texts } = useLenguage();
   const { projects } = useProjects();
-  const  [currentProject, setCurrentProject ] = useState(0);
-
-  const nextProject = () => {
-    setCurrentProject((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
-  };
+  const [currentProject, setCurrentProject] = useState(0);
+  const nextProject = () => setCurrentProject((prev) => (prev + 1) % projects.length);
+  const prevProject = () =>setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+  
+  useEffect(() => {
+    const intervalId = setInterval(() => { nextProject();}, 8000); // 8 seconds
+    return () => clearInterval(intervalId);
+  }, [projects.length]); 
 
   return (
     <section className="w-full py-16">
