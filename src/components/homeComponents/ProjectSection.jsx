@@ -12,7 +12,7 @@ export const ProjectSection = () => {
   const prevProject = () =>setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
   
   useEffect(() => {
-    const intervalId = setInterval(() => { nextProject();}, 8000); // 8 seconds
+    const intervalId = setInterval(() => { nextProject();}, 10000); // 10 seconds
     return () => clearInterval(intervalId);
   }, [projects.length]); 
 

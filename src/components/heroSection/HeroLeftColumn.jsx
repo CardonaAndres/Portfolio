@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github } from "lucide-react";
 
@@ -38,7 +37,7 @@ export const HeroLeftColumn = ({ texts }) => (
       <div className="flex gap-4">
         {[
           { Icon: Github, href: "https://github.com/CardonaAndres" },
-          { Icon: Linkedin, href: "https://linkedin.com/in/your-profile" }
+          { Icon: Linkedin, href: "https://www.linkedin.com/in/andrés-cardona-18418a206" }
         ].map(({ Icon, href }) => (
           <motion.a
             key={href}

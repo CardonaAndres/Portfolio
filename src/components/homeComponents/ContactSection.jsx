@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Send, AlertCircle } from 'lucide-react';
+import { Github, Linkedin, Send, AlertCircle } from 'lucide-react';
 import WhatsApp from '../../assets/svg/WhatsApp.svg';
 import { useLenguage } from '../../context/LanguageContext';
 import { useContactForm } from '../../hooks/useContactForm';
@@ -9,26 +9,20 @@ export const ContactSection = () => {
   const { register, handleSubmit, errors, handleWhatsApp, handleEmail } = useContactForm();
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-white/50 to-blue-50/50 dark:from-blue-800/50 dark:to-blue-900/50">
+    <section className="py-16 px-4 bg-gradient-to-b from-white/50 to-blue-50/50 dark:from-blue-900/50 dark:to-blue-900/50">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-8 animate__animated animate__fadeIn animate__delay-1s">
           {texts.contactMessage}
         </h2>
 
         <div className="flex justify-center gap-8 mb-12">
-          <a href="https://github.com/CardonaAndres" target="_blank" rel="noopener noreferrer"
-            className="group relative" >
+          <a href="https://github.com/CardonaAndres" target="_blank" rel="noopener noreferrer" className="group relative" aria-label='Github Link'>
             <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-0 group-hover:opacity-30 transition duration-300"></div>
             <Github className="w-8 h-8 text-blue-600 dark:text-white hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-300 transform hover:scale-110" />
           </a>
-          <a href="https://www.linkedin.com/in/tu-perfil/" target="_blank" rel="noopener noreferrer"
-            className="group relative">
+          <a href="https://www.linkedin.com/in/andrés-cardona-18418a206" target="_blank" rel="noopener noreferrer" className="group relative"  aria-label='Linkeding Link'>
             <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-0 group-hover:opacity-30 transition duration-300"></div>
             <Linkedin className="w-8 h-8 text-blue-600 dark:text-white hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-300 transform hover:scale-110" />
-          </a>
-          <a href="mailto:tuemail@ejemplo.com" className="group relative">
-            <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-0 group-hover:opacity-30 transition duration-300"></div>
-            <Mail className="w-8 h-8 text-blue-600 dark:text-white hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-300 transform hover:scale-110" />
           </a>
         </div>
 

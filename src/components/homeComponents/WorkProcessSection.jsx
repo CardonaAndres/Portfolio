@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Divider } from '../common/Divider';
 import { ProcessStep } from '../workSection/ProcessStep'
 import { SectionHeader } from '../workSection/SectionHeader';
 import { MethodologyAndCollaboration } from '../workSection/MethodologyAndCollaboration';
@@ -11,6 +12,7 @@ export const WorkProcessSection = () => {
 
   return (
     <section className="relative min-h-screen bg-blue-900 text-white py-20 px-4">
+      <Divider />
       <div className="max-w-7xl mx-auto relative">
         <SectionHeader />
 
