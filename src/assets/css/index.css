@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 * { padding: 0%; margin: 0%; }
-
-::-webkit-scrollbar { width: 10px;  height: 10px; }
+::-webkit-scrollbar { width: 5px;  height: 5px; }
 ::-webkit-scrollbar-track {background: #3b21cf;}
-
 ::-webkit-scrollbar-thumb { background: #007bff; border-radius: 10px; }
