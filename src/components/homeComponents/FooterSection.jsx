@@ -11,17 +11,17 @@ export const FooterSection = () => {
     {
       name: 'GitHub',
       icon: <Github className="w-5 h-5" />,
-      url: 'https://github.com/yourusername'
+      url: 'https://github.com/CardonaAndres'
     },
     {
       name: 'LinkedIn',
       icon: <Linkedin className="w-5 h-5" />,
-      url: 'https://linkedin.com/in/yourusername'
+      url: 'https://www.linkedin.com/in/andr%C3%A9s-cardona-18418a206'
     },
     {
       name: 'Email',
       icon: <Mail className="w-5 h-5" />,
-      url: 'mailto:your@email.com'
+      url: 'mailto:11cardona31@gmail.com'
     }
   ];
 
