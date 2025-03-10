@@ -1,6 +1,7 @@
 export const texts = {
     es: {
         profecional: "Desarrollador Full Stack",
+        jsMessage : 'Experto en Node.js',
         home: "Sobre Mí",
         projects: "Proyectos",
         projectDescription : 'Explora algunos de los trabajos y proyectos en los que he estado trabajando últimamente.',
@@ -45,6 +46,7 @@ export const texts = {
     },
     en: {
         profecional: "Full Stack Developer",
+        jsMessage : 'Node.js Expert',
         home: "About me",
         projects: "Projects",
         projectDescription : 'Explore some of the work and projects I have been working on lately.',

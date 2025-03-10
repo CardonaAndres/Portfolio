@@ -87,7 +87,7 @@ export const Navbar = () => {
                 <OnChangeLenguage />
               </motion.div>
               
-              <motion.button onClick={toggleMenu} className="p-3 text-blue-600 dark:text-white rounded-xl hover:bg-blue-50 dark:hover:bg-blue-800/50" whileHover={{ scale: 1.1 }}
+              <motion.button onClick={toggleMenu} aria-label="Menu Icon" className="p-3 text-blue-600 dark:text-white rounded-xl hover:bg-blue-50 dark:hover:bg-blue-800/50" whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}>
                 <motion.div animate={{ rotate: isMenuOpen ? 180 : 0 }} transition={{ duration: 0.5 }}>
                   {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -110,7 +110,7 @@ export const Navbar = () => {
       >
         <div className="p-8 h-full flex flex-col">
           <div className="flex justify-end mb-8">
-            <motion.button onClick={toggleMenu} className="p-2 text-blue-600 dark:text-white rounded-lg hover:bg-blue-50 dark:hover:bg-blue-800/50" whileHover={{ scale: 1.1 }}
+            <motion.button onClick={toggleMenu} aria-label="Button X" className="p-2 text-blue-600 dark:text-white rounded-lg hover:bg-blue-50 dark:hover:bg-blue-800/50" whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }} >
               <X size={24} />
             </motion.button>
