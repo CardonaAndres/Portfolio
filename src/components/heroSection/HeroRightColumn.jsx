@@ -172,7 +172,7 @@ export const HeroRightColumn = ({ fotoHV }) => {
       
       {/* Indicador de skill con animación */}
       <motion.div 
-        className="absolute -left-4 -top-2 bg-white/90 py-1 px-3 rounded-full shadow-lg flex items-center gap-1"
+        className="absolute -left-2 -top-2 bg-white/90 py-1 px-3 rounded-full shadow-lg flex items-center gap-1"
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         whileHover={{ scale: 1.05 }}
