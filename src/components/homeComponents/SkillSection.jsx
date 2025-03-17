@@ -10,17 +10,17 @@ export const SkilSection = () => {
         {
             title: "Frontend",
             icon: <Code2 className="w-6 h-6" />,
-            skills: ["Html", "CSS", "JavaScript", "React", "TailwindCSS"]
+            skills: ["Html", "CSS", "JavaScript", "React", "TailwindCSS", "Bootstrap"]
         },
         {
             title: "Backend",
             icon: <Server className="w-6 h-6" />,
-            skills: ["Node.js", "Express", "Python", "FastAPI", "PHP", "Laravel"]
+            skills: ["Node.js", "Express", "Python", "FastAPI", "PHP", "Laravel", "Java"]
         },
         {
             title: `${ lenguage == 'en' ? 'Database' : 'Base De Datos' }`,
             icon: <Database className="w-6 h-6" />,
-            skills: ["MongoDB", "SQL", "SqlServer", "MySQL"]
+            skills: ["MongoDB", "SQL", "SQL Server", "MySQL"]
         },
         {
             title: `${ lenguage == 'en' ? 'Tools' : 'Herramientas' }`,
