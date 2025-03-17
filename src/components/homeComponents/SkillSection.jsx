@@ -10,12 +10,12 @@ export const SkilSection = () => {
         {
             title: "Frontend",
             icon: <Code2 className="w-6 h-6" />,
-            skills: ["Html", "CSS", "JavaScript", "React", "TailwindCSS", "Bootstrap"]
+            skills: ["Html", "CSS", "JavaScript", "TypeScript", "React", "TailwindCSS", "Bootstrap"]
         },
         {
             title: "Backend",
             icon: <Server className="w-6 h-6" />,
-            skills: ["Node.js", "Express", "Python", "FastAPI", "PHP", "Laravel", "Java"]
+            skills: ["Node.js", "Express.js", "NestJS", "Python", "FastAPI", "PHP", "Laravel", "Java"]
         },
         {
             title: `${ lenguage == 'en' ? 'Database' : 'Base De Datos' }`,
