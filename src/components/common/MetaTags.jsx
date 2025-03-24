@@ -12,10 +12,10 @@ export const MetaTags = () => {
         <meta property="og:description" content="Descubre los proyectos y habilidades de Andrés, un desarrollador de software" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://portfolio-cardonaandres-projects.vercel.app" />
-        <meta property="og:image" content="https://portfolio-cardonaandres-projects.vercel.app" />
+        <meta property="og:image" content="https://portfolio-cardonaandres-projects.vercel.app/public/FotoHV.webp" />
         <meta name="twitter:title" content="Mi Portafolio - Andrés Cardona" />
         <meta name="twitter:description" content="Hola, soy Andrés Cardona, un Desarrollador de Software apasionado por crear soluciones tecnológicas. Explora mi portafolio para conocer mis proyectos y habilidades." />
-        <meta name="twitter:image" content="https://portfolio-cardonaandres-projects.vercel.app" />
+        <meta name="twitter:image" content="https://portfolio-cardonaandres-projects.vercel.app/public/FotoHV.webp" />
     </Helmet>
   )
 }
