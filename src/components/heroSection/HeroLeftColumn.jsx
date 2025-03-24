@@ -45,12 +45,12 @@ export const HeroLeftColumn = ({ texts }) => {
         />
       </motion.div>
 
-      <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-bold text-slate-800 dark:text-white leading-tight mb-8"
+      <motion.h1 variants={itemVariants} className="text-4xl lg:text-7xl font-bold text-slate-800 dark:text-white leading-tight mb-8"
         onMouseEnter={() => setHoverState({...hoverState, title: true})}
         onMouseLeave={() => setHoverState({...hoverState, title: false})}>
         <div className="overflow-hidden">
           {titleChars.map((char, index) => (
-            <motion.span  key={index} className={blueLettersIndex.includes(index) ? "text-blue-500 dark:text-blue-400 relative inline-block" : ""}
+            <motion.span  key={index} className={blueLettersIndex.includes(index) ? "relative inline-block text-blue-500 dark:text-blue-400 transition-colors duration-200 hover:text-blue-700 dark:hover:text-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 font-bold glow animate-glow" : ""}
             initial={{ y: 40, opacity: 0 }} 
             animate={{ 
               y: 0, 
