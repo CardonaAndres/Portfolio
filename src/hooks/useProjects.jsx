@@ -3,6 +3,7 @@ import UrbanWheels from '../assets/imgs/UrbanWheels.webp';
 import NexoMigratorio from '../assets/imgs/NexoMigratorioIMG.webp';
 import Spa from '../assets/imgs/Spa.webp';
 import Factus from '../assets/imgs/FactusIMG.webp';
+import RojasPapas from '../assets/imgs/RojasPapas.webp';
 import { useLenguage } from '../context/LanguageContext';
 
 export const useProjects = () => {
@@ -11,6 +12,13 @@ export const useProjects = () => {
     const isEnglish = lenguage === 'en';
 
     const projects = [
+        {
+            title: `${ isEnglish ? 'Rojas' : 'Rojas Papas' }`,
+            description: `${ isEnglish ? 'Rojas, a restaurant chain specializing in salchipapas, located in the viewpoints of Las Palmas, Antioquia, Colombia.' : 'Rojas Papas, una cadena de restaurantes especializada en salchipapas ubicados en los miradores de Las Palmas, Antioquia, Colombia.' }`,
+            tags: ["TypeScript", "React", "TailwindCSS"],
+            image: RojasPapas,
+            link : 'https://rojas-papas.vercel.app'
+        },
         {
             title: "Reservify",
             description: `${ isEnglish ? 'A reservation system for restaurants, with a simple and intuitive interface for both the client and the administrator.' : 'Un sistema de reservas para restaurantes, con una interfaz simple e intuitiva tanto para el cliente como para el administrador.' }`,
