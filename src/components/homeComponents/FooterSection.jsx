@@ -36,9 +36,6 @@ export const FooterSection = () => {
             className="text-2xl font-bold text-white">
             Andrés Cardona
           </motion.h3>
-          <p className="text-blue-200">
-            {texts.footerMessage}
-          </p>
         </div>
 
         <div className="flex justify-center md:justify-end gap-4">
