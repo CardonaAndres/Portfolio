@@ -32,12 +32,12 @@ export const ProjectsCarousel = () => {
       </div>
 
       <div className="relative w-full">
-        <button onClick={prevProject} className="absolute left-[-2rem] top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center backdrop-blur-md shadow-lg rounded-full border-2 border-blue-900 transition-all duration-300 z-20 bg-blue-700/70" aria-label="Previous project"
+        <button onClick={prevProject} className="absolute left-[-18px] top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center backdrop-blur-md shadow-lg rounded-full border-2 border-blue-900 transition-all duration-300 z-20 bg-blue-700/70" aria-label="Previous project"
         >
           <ChevronLeft className="text-blue-900 dark:text-white" size={24} />
         </button>
 
-        <button onClick={nextProject} className="absolute right-[-2rem] top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center backdrop-blur-md shadow-lg rounded-full border-2 border-blue-900 transition-all duration-300 z-20 bg-blue-700/70" 
+        <button onClick={nextProject} className="absolute right-[-18px] top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center backdrop-blur-md shadow-lg rounded-full border-2 border-blue-900 transition-all duration-300 z-20 bg-blue-700/70" 
         >
           <ChevronRight className="text-blue-900 dark:text-white" size={24} />
         </button>
