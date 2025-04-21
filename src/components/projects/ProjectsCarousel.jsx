@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useProjects } from "../../hooks/useProjects";
 import { useLenguage } from "../../context/LanguageContext";
@@ -9,19 +9,8 @@ export const ProjectsCarousel = () => {
   const { texts } = useLenguage();
   const { projects } = useProjects();
   const [currentProject, setCurrentProject] = useState(0);
-
-  const nextProject = () => {
-    setCurrentProject((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  useEffect(() => {
-    const intervalId = setInterval(nextProject, 5000);
-    return () => clearInterval(intervalId);
-  }, [projects.length]);
+  const nextProject = () => setCurrentProject((prev) => (prev + 1) % projects.length);
+  const prevProject = () => setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
 
   return (
     <div className="relative w-full max-w-4xl mx-auto sm:px-6 lg:px-8 group">
