@@ -38,7 +38,7 @@ export const useProjects = () => {
             description: `${ isEnglish ? 'A landing page for an emerging beauty salon, designed to boost its online visibility and increase sales. This page has been instrumental in connecting with more clients and providing them with an efficient and accessible online booking experience.' : 'Landing page para un salón de belleza emergente, diseñada para aumentar su visibilidad en línea y potenciar sus ventas. Esta página ha sido clave para conectar con más clientes y ofrecerles una experiencia de reserva en línea eficiente y accesible.' }`,
             tags: ["JavaScript", "React", "TailwindCSS"],
             image: Spa,
-            link : 'https://centro-estetico-xi.vercel.app/'
+            link : 'https://centro-estetico-ruby.vercel.app/'
         },
         {
             title: `${ isEnglish ? 'Nexo Migratorio LLC' : 'Nexo Migratorio LLC' }`,
