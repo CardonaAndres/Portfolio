@@ -16,8 +16,8 @@ export const SkillsSection = () => {
       icon: <Server className="w-10 h-10 text-green-600" />,
       title: lenguage === 'en' ? "Backend Development" : "Desarrollo Backend",
       description: lenguage === 'en' 
-        ? "Developing robust APIs using Node.js, Express, FastAPI, PHP (Laravel), and Docker, ensuring security and scalability." 
-        : "Desarrollo de APIs robustas con Node.js, Express, FastAPI, PHP (Laravel) y Docker, asegurando seguridad y escalabilidad."
+        ? "Developing robust APIs using Node.js, Express, NestJS, Python, FastAPI, PHP (Laravel), and Docker, ensuring security and scalability." 
+        : "Desarrollo de APIs robustas con Node.js, Express, NestJS, Python, FastAPI, PHP (Laravel) y Docker, asegurando seguridad y escalabilidad."
     },
     {
       icon: <Database className="w-10 h-10 text-purple-600" />,

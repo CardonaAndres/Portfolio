@@ -20,7 +20,7 @@ export const SkilSection = () => {
         {
             title: `${ lenguage == 'en' ? 'Database' : 'Base De Datos' }`,
             icon: <Database className="w-6 h-6" />,
-            skills: ["MongoDB", "SQL", "SQL Server", "MySQL"]
+            skills: ["MongoDB", "SQL", "SQL Server", "MySQL", "PostgreSQL", "SQLite"]
         },
         {
             title: `${ lenguage == 'en' ? 'Tools' : 'Herramientas' }`,
