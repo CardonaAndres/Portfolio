@@ -28,3 +28,26 @@ export type ProjectSecondary = {
   demo: string;
   features: string[];
 }
+
+export interface TimelineItem {
+  id: number;
+  type: ItemType;
+  title: string;
+  company: string;
+  location: string;
+  date: string;
+  current?: boolean;
+  description: string;
+  achievements: string[];
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+}
+
+export interface FilterType {
+  id: ItemType | 'all';
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+}
+
+export type ItemType = 'work' | 'education' | 'achievement';

@@ -7,14 +7,18 @@ const skills = [
 
 const socialMediaLinks = [
     {
+      id : 1,
       icon : Github,
       name : 'Perfil de github',
-      url : 'https://github.com/CardonaAndres'
+      url : 'https://github.com/CardonaAndres',
+      color: 'hover:text-gray-400'
     },
     {
+      id : 2,
       icon : Linkedin,
       name : 'Perfil de linkedin',
-      url : ''
+      url : '',
+      color: 'hover:text-blue-500'
     },
 ];
 
