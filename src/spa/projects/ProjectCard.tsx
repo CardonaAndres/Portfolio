@@ -132,16 +132,11 @@ export const ProjectCard = ({ currentProject, activeProject, setHoveredTech }: P
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className="absolute z-50 mt-2 p-7 bg-gray-800/95 backdrop-blur-sm rounded-lg shadow-xl border border-gray-700 max-w-md"
                   style={{ 
-                    left: isMobile ? '50%' : '0',
+                    left: isMobile ? '0%' : '0',
                     transform: isMobile ? 'translateX(-50%)' : 'none'
                   }}
                 >
-                  <div className="space-y-3">
-                    {/* Título de la info adicional */}
-                    <h4 className="text-blue-400 font-semibold text-sm">
-                      Información adicional
-                    </h4>
-                    
+                  <div className="space-y-3">                 
                     {/* Descripción larga */}
                     <p className="text-gray-300 text-sm leading-relaxed">
                       {currentProject.longDescription}

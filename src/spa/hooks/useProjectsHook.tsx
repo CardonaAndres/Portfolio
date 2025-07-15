@@ -115,7 +115,6 @@ export const useProjectsHook = () => {
         color: 'blue-500',
         github: 'https://github.com/CardonaAndres/NexoMigratorioLLC',
         demo: 'https://www.nexomigratorio.com',
-        features: ['Responsive', 'Animaciones', 'SEO Optimizado']
       },
       {
         id: 2,
@@ -127,7 +126,6 @@ export const useProjectsHook = () => {
         color: 'green-500',
         github: 'https://github.com/CardonaAndres/GrupoCOActivaSAS',
         demo: 'https://www.grupocoactivasas.com/',
-        features: ['Galería', 'Transiciones', 'Dark Mode']
       },
       {
         id: 3,
@@ -139,19 +137,17 @@ export const useProjectsHook = () => {
         color: 'rose-500',
         github: 'https://github.com/CardonaAndres/CentroEstetico',
         demo: 'https://centro-estetico-ruby.vercel.app/',
-        features: ['Tiempo Real', 'PWA', 'Multi-idioma']
       },
       {
         id: 4,
-        title: 'Cuidado y Armonia | Portafolio de servicios',
+        title: `${isSpanish ? 'Cuidado y Armonia | Portafolio de servicios' : 'Care and Harmony | Services Portfolio'}`,
         description: `${isSpanish ? '¡Portafolio de Servicios de Cuidado Armonía! Este proyecto presenta de forma moderna y accesible los servicios ofrecidos por Cuidado Armonía, enfocados en el bienestar, el cuidado personal y la armonía interior.' : 'Cuidado Armonía Services Portfolio! This project presents the services offered by Cuidado Armonía in a modern and accessible way, focusing on well-being, personal care, and inner harmony.'}`,
         category: 'web',
-        technologies: ['Vue.js', 'Vuetify', 'Firebase'],
+        technologies: ['TypeScript', 'React', 'Tailwind'],
         image: '/assets/imgs/projects/secondary/portafolio_de_servicios_cuidado_y_armonia.webp',
         color: 'purple-500',
         github: 'https://github.com/CardonaAndres/portafolio-cuidado-armonia',
         demo: 'https://servicios-cuidado-y-armonia.vercel.app/',
-        features: ['Tiempo Real', 'PWA', 'Multi-idioma']
       }
     ];
 

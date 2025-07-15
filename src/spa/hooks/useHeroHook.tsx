@@ -9,15 +9,15 @@ const socialMediaLinks = [
     {
       id : 1,
       icon : Github,
-      name : 'Perfil de github',
+      name : 'github',
       url : 'https://github.com/CardonaAndres',
       color: 'hover:text-gray-400'
     },
     {
       id : 2,
       icon : Linkedin,
-      name : 'Perfil de linkedin',
-      url : '',
+      name : 'linkedin',
+      url : 'https://www.linkedin.com/in/andr%C3%A9s-cardona-18418a206',
       color: 'hover:text-blue-500'
     },
 ];

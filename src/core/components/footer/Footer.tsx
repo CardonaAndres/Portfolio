@@ -1,34 +1,26 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Mail,
-  Phone,
-  Code2,
-  Sparkles,
-  Heart,
-  Coffee,
-  Zap,
-  Terminal,
-  Rocket,
-  ExternalLink
-} from 'lucide-react';
+import { Mail, Phone, Code2, Sparkles, Heart, Coffee, Zap, Terminal, Rocket, ExternalLink } from 'lucide-react';
 import { useHeroHook } from '@/spa/hooks/useHeroHook';
+import { useLanguage } from '@/core/context/LanguageContext';
 
 export const Footer = () => {
+  const isSpanish = useLanguage().language === 'ES';
   const { socialMediaLinks : socialLinks } = useHeroHook();
   const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: 'Sobre mí', href: '#about', icon: Code2 },
-    { label: 'Proyectos', href: '#projects', icon: Rocket },
-    { label: 'Contacto', href: '#contact', icon: Mail },
+    { label: isSpanish ? 'Sobre mí' : 'About Me', href: '#about', icon: Code2 },
+    { label: isSpanish ? 'Proyectos' : 'Projects', href: '#projects', icon: Rocket },
+    { label: isSpanish ? 'Contacto' : 'Contact', href: '#contact', icon: Mail },
   ];
 
   const skills = [
     'JavaScript', 'TypeScript', 'React', 'Node.js', 
     'Express', 'NestJS', 'Python', 'FastAPI',
-    'Docker', 'SQL', 'MongoDB', 'Git'
+    'Docker', 'SQL', 'MongoDB', 'Git', 'Laravel',
+    'PHP', 'Tailwind CSS'
   ];
   
   return (
@@ -75,12 +67,14 @@ export const Footer = () => {
                   <div className="absolute inset-0 w-8 h-8 bg-blue-500 blur-xl opacity-50"></div>
                 </motion.div>
                 <span className="text-2xl font-bold text-white">
-                  Dev<span className="text-blue-500">Folio</span>
+                 <span className="text-blue-500">Andrés</span> Cardona
                 </span>
               </div>
               <p className="text-gray-400 mb-6">
-                Desarrollador Full Stack apasionado por crear experiencias web 
-                excepcionales con las últimas tecnologías.
+                {isSpanish ? 
+                  'Desarrollador Full Stack apasionado por crear experiencias web excepcionales con las últimas tecnologías.' 
+                  : 'Full Stack Developer with a passion for creating exceptional web experiences using the latest technologies.'
+                }
               </p>
               <div className="flex space-x-3">
                 {socialLinks.map((social) => (
@@ -120,7 +114,7 @@ export const Footer = () => {
             >
               <h3 className="text-lg font-semibold text-white mb-6 flex items-center space-x-2">
                 <Zap className="w-5 h-5 text-blue-500" />
-                <span>Enlaces Rápidos</span>
+                <span>{isSpanish ? 'Enlaces Rápidos' : 'Quick Links'}</span>
               </h3>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
@@ -207,7 +201,7 @@ export const Footer = () => {
                 viewport={{ once: true }}
                 className="text-gray-400 text-sm flex items-center space-x-2"
               >
-                <span>© {currentYear} Andrés Cardona. Hecho con</span>
+                <span>© {currentYear} {isSpanish ? 'Andrés Cardona. Hecho con' : 'Andrés Cardona. Made with'} </span>
                 <motion.span
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -215,7 +209,7 @@ export const Footer = () => {
                 >
                   <Heart className="w-4 h-4 fill-current" />
                 </motion.span>
-                <span>y mucho</span>
+                <span> {isSpanish ? 'y mucho' : 'and much'} </span>
                 <Coffee className="w-4 h-4 text-brown-400" />
               </motion.p>
             </div>

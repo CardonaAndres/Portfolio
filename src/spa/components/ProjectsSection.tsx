@@ -3,8 +3,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Sparkles, ArrowLeft, ArrowRight } from 'lucide-react';
 import { ProjectCard } from '../projects/ProjectCard';
 import { useProjectsHook } from '../hooks/useProjectsHook';
+import { useLanguage } from '@/core/context/LanguageContext';
 
 export const ProjectsSection = () => {
+  const { language } = useLanguage();
+  const isSpanish = language === 'ES';  
   const { projects } = useProjectsHook();
   const [activeProject, setActiveProject] = useState(0);
   const [_, setHoveredTech] = useState<null | string>(null);
@@ -21,7 +24,7 @@ export const ProjectsSection = () => {
   const prevProject = () => setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
   
   useEffect(() => {
-    const handleKeyPress = (e : any) => {
+    const handleKeyPress = (e : KeyboardEvent) => {
       if (e.key === 'ArrowRight') nextProject();
       if (e.key === 'ArrowLeft') prevProject();
     };
@@ -71,13 +74,13 @@ export const ProjectsSection = () => {
             className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-sm mb-6"
           >
             <Sparkles className="w-4 h-4 text-blue-400" />
-            <span className="text-sm text-blue-400 font-medium">Proyectos Destacados</span>
+            <span className="text-sm text-blue-400 font-medium">{ isSpanish ? 'Proyectos Destacados' : 'Featured Projects' }</span>
           </motion.div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Mi <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Trabajo</span>
+            { isSpanish ? 'Mi' : 'My' } <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">{ isSpanish ? 'Trabajo' : 'Work' }</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Explora mis proyectos más recientes y descubre cómo transformo ideas en soluciones tecnológicas innovadoras
+            { isSpanish ? 'Explora mis proyectos más recientes y descubre cómo transformo ideas en soluciones tecnológicas innovadoras' : 'Explore my latest projects and see how I turn ideas into innovative tech solutions' }
           </p>
         </motion.div>
 
@@ -97,7 +100,7 @@ export const ProjectsSection = () => {
               transition={{ delay: 0.5 }}
               className="inline-flex items-center space-x-3 px-4 py-2 rounded-lg bg-gray-800/50 border border-gray-700/50 backdrop-blur-sm"
             >
-              <span className="text-gray-400 text-sm">Puedes usar las teclas para navegar:</span>
+              <span className="text-gray-400 text-sm">{ isSpanish ? 'Puedes usar las teclas para navegar:' : 'You can use the keys to navigate:' }</span>
               <div className="flex items-center space-x-2">
                 <motion.div
                   whileHover={{ scale: 1.1 }}
@@ -131,6 +134,7 @@ export const ProjectsSection = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={prevProject}
+            aria-label='Previous Project'
             className="p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -141,10 +145,11 @@ export const ProjectsSection = () => {
             {projects.map((_, index) => (
               <motion.button
                 key={index}
+                ariala-label={`Project Indicator ${index + 1}`}
                 whileHover={{ scale: 1.2 }}
                 aria-label={`Select Project ${index + 1}`}
                 onClick={() => setActiveProject(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-300 mx-3 ${
                   index === activeProject 
                     ? 'w-8 bg-blue-500' 
                     : 'w-2 bg-gray-600 hover:bg-gray-500'
@@ -154,6 +159,7 @@ export const ProjectsSection = () => {
           </div>
 
           <motion.button
+          aria-label='Next Project'
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={nextProject}

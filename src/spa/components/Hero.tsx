@@ -126,7 +126,9 @@ export const Hero = () => {
                   whileTap={{ scale: 0.95 }} className="group flex items-center space-x-2 px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-all duration-300 bg-white/20"
                 >
                   <Code2 className="w-4 h-4" />
-                  <span>Softwares que cuentan historias</span>
+                  <span>
+                    { isSpanish ? 'Softwares que cuentan historias' : 'Software that tells stories' }
+                  </span>
                 </motion.button>
               </motion.div>
 
@@ -141,7 +143,8 @@ export const Hero = () => {
                   <motion.a
                     key={index}
                     href={item.url}
-                    aria-label={item.name}
+                    aria-label={`Link to ${item.name}`}
+                    target="_blank"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
                     className="p-3 rounded-full bg-white/10 text-gray-300 hover:bg-blue-500/20 hover:text-blue-400 transition-all duration-300"

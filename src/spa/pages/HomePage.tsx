@@ -21,7 +21,7 @@ export const HomePage = () => {
         <div id="skills">
           <SkillsShowcase />
         </div>
-        <div>
+        <div id="experience">
             <Timeline />
         </div>
       </div>

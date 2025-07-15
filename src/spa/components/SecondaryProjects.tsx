@@ -4,8 +4,10 @@ import { ExternalLink, Github, Code2, ChevronRight } from 'lucide-react';
 import { useHeroHook } from '../hooks/useHeroHook';
 import { useProjectsHook } from '../hooks/useProjectsHook';
 import { getColorClasses } from '../assets/ts/styles';
+import { useLanguage } from '@/core/context/LanguageContext';
 
 export const SecondaryProjects = () => {
+  const isSpanish = useLanguage().language === 'ES';
   const { socialMediaLinks } = useHeroHook();
   const { secondaryProjects } = useProjectsHook();
   const [_, setHoveredProject] = useState<null | number>(null);
@@ -35,18 +37,19 @@ export const SecondaryProjects = () => {
             className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-sm mb-4"
           >
             <Code2 className="w-4 h-4 text-blue-400" />
-            <span className="text-sm text-blue-400 font-medium">Más Proyectos</span>
+            <span className="text-sm text-blue-400 font-medium">
+              {isSpanish ? 'Más Proyectos' : 'More Projects'}
+            </span>
           </motion.div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Otros Trabajos
+            {isSpanish ? 'Otros Trabajos' : 'Other Works'}
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-300 mt-2">
-              Destacados
+              {isSpanish ? 'Destacados' : 'Featured'}
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Explora más proyectos que demuestran mi versatilidad en desarrollo web, 
-            desde landing pages hasta aplicaciones completas
+            {isSpanish ? 'Explora más proyectos que demuestran mi versatilidad en desarrollo web, desde landing pages hasta aplicaciones completas.' : 'Explore more projects that showcase my versatility in web development, from landing pages to full applications.'}
           </p>
         </motion.div>
 
@@ -121,14 +124,14 @@ export const SecondaryProjects = () => {
                         className={`flex-1 px-4 py-2 ${colorClasses.buttonPrimary} rounded-lg text-sm font-medium transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer`}
                       >
                         <ExternalLink className="w-4 h-4" />
-                        <span>Explorar</span>
+                        <span>{isSpanish ? 'Explorar' : 'Explore'}</span>
                       </motion.a>
                       
                       <motion.a href={project.github} target="_blank"  whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }} className={`px-4 py-2 bg-white/10 ${colorClasses.buttonSecondary} border border-white/20 rounded-lg text-white text-sm font-medium transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer`}
                       >
                         <Github className="w-4 h-4" />
-                        <span>Código</span>
+                        <span>{isSpanish ? 'Código' : 'Code'}</span>
                       </motion.a>
                     </div>
                   </div>
@@ -154,7 +157,7 @@ export const SecondaryProjects = () => {
             className="group inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
           >
             <span className='flex items-center gap-2'>
-              <Github /> Ver más en GitHub
+              <Github /> {isSpanish ? 'Ver más en GitHub' : 'View more on GitHub'}
             </span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </motion.a>

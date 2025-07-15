@@ -26,7 +26,6 @@ export type ProjectSecondary = {
   color: string;
   github: string;
   demo: string;
-  features: string[];
 }
 
 export interface TimelineItem {
@@ -51,3 +50,30 @@ export interface FilterType {
 }
 
 export type ItemType = 'work' | 'education' | 'achievement';
+
+export type SkillLevel = 'Experto' | 'Avanzado' | 'Intermedio' | 'Básico' | 'Expert' | 'Advanced' | 'Intermediate' | 'Basic';
+
+export interface TechSkill {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  level: SkillLevel;
+  color: string;
+}
+
+export type LevelColors = {
+  [K in SkillLevel]: string;
+};
+
+export interface SkillCategory {
+  title: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  skills: TechSkill[];
+}
+
+export interface TechSkill {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  level: SkillLevel;
+  color: string;
+}
