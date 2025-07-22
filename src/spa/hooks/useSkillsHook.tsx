@@ -87,7 +87,7 @@ export const useSkillsHook = () => {
             icon: Terminal,
             color: 'from-indigo-600 to-purple-600',
             skills: [
-                { name: 'Docker', icon: Package, level: defineSkillLevel.Intermediate, color: 'from-blue-500 to-blue-600' },
+                { name: 'Docker', icon: Package, level: defineSkillLevel.Advanced, color: 'from-blue-500 to-blue-600' },
                 { name: 'Git/GitHub', icon: GitBranch, level: defineSkillLevel.Advanced, color: 'from-gray-600 to-gray-700' },
                 { name: 'Nginx', icon: Package, level: defineSkillLevel.Intermediate, color: 'from-green-600 to-green-700' },
                 { name: 'CI/CD', icon: Workflow, level: defineSkillLevel.Basic, color: 'from-yellow-500 to-yellow-600' },
