@@ -24,76 +24,115 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
       setTimeout(() => {
         setShowCode(prev => !prev);
         setIsFlipping(false);
-      }, 300); // Mitad de la duración del flip
+      }, 200); // Reducido para móvil
     }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Configuraciones optimizadas por dispositivo
+  const animationConfig = {
+    // Animaciones más suaves para móvil
+    initial: isMobile ? 
+      { opacity: 0, scale: 0.95 } : 
+      { opacity: 0, scale: 0.8 },
+    
+    // Duraciones más cortas en móvil
+    cardTransition: {
+      delay: isMobile ? 0.2 : 0.5,
+      duration: isMobile ? 0.4 : 0.8,
+      ease: "easeOut" as const
+    },
+    
+    // Rotaciones más sutiles en móvil
+    cardRotation: isMobile ? {
+      rotateY: 0,  // Sin rotación 3D en móvil
+      rotateX: 0,
+      rotateZ: isFlipping ? 5 : 0 , // Rotación mínima
+    } : {
+      rotateY: isHovered ? 10 : 0,
+      rotateX: isHovered ? -10 : 0,
+      rotateZ: isFlipping ? 180 : 0,
+    },
+    
+    // Transición más rápida en móvil
+    flipTransition: {
+      duration: isMobile ? 0.3 : 0.5,
+      ease: "easeInOut" as const
+    }
+  };
+
   return (
     <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={animationConfig.initial}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
+        transition={animationConfig.cardTransition}
         className="relative"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => !isMobile && setIsHovered(true)}
+        onMouseLeave={() => !isMobile && setIsHovered(false)}
     >
         <motion.div
-        animate={{
-            rotateY: isHovered ? 10 : 0,
-            rotateX: isHovered ? -10 : 0,
-            rotateZ: isFlipping ? 180 : 0,
-        }}
-        transition={{ duration: 0.5 }}
+        animate={animationConfig.cardRotation}
+        transition={animationConfig.flipTransition}
         className="relative mx-auto max-w-md"
-        style={{ perspective: 1000 }}
+        style={{ perspective: isMobile ? 'none' : 1000 }}
         >
-        {/* Floating Tags around the card */}
-        {floatingTags.map((tag, index) => (
+        {/* Floating Tags around the card - Solo desktop */}
+        {!isMobile && floatingTags.map((tag, index) => (
             <motion.div
             key={tag.id}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+            transition={{ 
+              delay: 0.6 + index * 0.08, // Delays más cortos
+              duration: 0.4,
+              ease: "easeOut"
+            }}
             style={{
                 position: 'absolute',
-                ...(isMobile ? tag.mobilePosition : tag.position),
-                transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+                ...tag.position,
+                transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`, // Menos movimiento
                 zIndex: 10,
             }}
             className="hidden sm:block"
             >
             <motion.div
                 animate={{
-                y: [0, -10, 0],
-                rotate: [-2, 2, -2],
+                y: [0, -8, 0], // Menos movimiento vertical
+                rotate: [-1, 1, -1], // Menos rotación
                 }}
-                transition={{ duration: 4 + index, repeat: Infinity, ease: "easeInOut" }}
-                whileHover={{ scale: 1.1, rotate: 0 }}
+                transition={{ 
+                  duration: 3 + index * 0.5, // Más variación pero más rápido
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                whileHover={{ scale: 1.05, rotate: 0 }} // Escala más sutil
                 className={`group relative flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r ${tag.color} backdrop-blur-sm cursor-pointer shadow-lg`}
             >
                 <tag.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                 <span className="text-xs sm:text-sm font-medium text-white whitespace-nowrap">{tag.text}</span>
-                <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             </motion.div>
             </motion.div>
         ))}
 
-        {/* Glowing Background */}
+        {/* Glowing Background - Reducido en móvil */}
         {!isMobile && (<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl" />)}
         
         {/* Card Container */}
         <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-black/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/10 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl" />
             
-            {/* Card Content - Alternating between code and photo */}
+            {/* Card Content - Transición más suave */}
             <motion.div
                 key={showCode ? 'code' : 'photo'}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: isMobile ? 0.98 : 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, scale: isMobile ? 0.98 : 0.8 }}
+                transition={{ 
+                  duration: isMobile ? 0.3 : 0.5,
+                  ease: "easeOut"
+                }}
                 className="relative"
             >
                 {showCode ? (
@@ -130,12 +169,16 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
                             <span className="text-gray-400 ml-2">[</span>
                             </div>
                             <div className="ml-8 space-y-1">
-                            {['JavaScript', 'TypeScript', 'Node.js', 'Express.js'].map((skill, i) => (
+                            {['JavaScript', 'TypeScript', 'Node.js', 'Express.js', 'NestJS'].map((skill, i) => (
                                 <motion.div
                                 key={skill}
-                                initial={{ opacity: 0, x: -20 }}
+                                initial={{ opacity: 0, x: isMobile ? -10 : -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 1 + i * 0.1 }}
+                                transition={{ 
+                                  delay: isMobile ? 0.8 + i * 0.05 : 1 + i * 0.1,
+                                  duration: 0.3,
+                                  ease: "easeOut" 
+                                }}
                                 >
                                 <span className="text-orange-400">'{skill}'</span>,
                                 </motion.div>
@@ -152,12 +195,14 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
                         <div className="relative">
                             <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1">
                                 <img
-                                    src="/assets/imgs/me/FotoHV.webp" // Reemplaza con la ruta de tu foto
+                                    src="/assets/imgs/me/FotoHV.webp"
                                     alt="Andrés Cardona"
                                     className="w-full h-full rounded-full object-cover"
                                 />
                             </div>
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-md -z-10" />
+                            {!isMobile && (
+                              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-md -z-10" />
+                            )}
                         </div>
                         
                         <div className="text-center">
@@ -174,13 +219,22 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
                 )}
             </motion.div>
 
-            {/* Animated Skills - Only show in code view */}
+            {/* Animated Skills - Optimizado para móvil */}
             {showCode && (
                 <div className="mt-6 flex flex-wrap gap-2">
                 {skills.map((skill, index) => (
-                    <motion.span key={skill} initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.5 + index * 0.05 }}
-                    whileHover={{ scale: 1.1 }} className="px-2 sm:px-3 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                    <motion.span 
+                    key={skill} 
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ 
+                      delay: isMobile ? 1.1 + index * 0.03 : 1.5 + index * 0.05,
+                      duration: 0.3,
+                      ease: "easeOut"
+                    }}
+                    whileHover={!isMobile ? { scale: 1.1 } : {}} // Solo hover en desktop
+                    whileTap={isMobile ? { scale: 0.95 } : {}} // Tap feedback en móvil
+                    className="px-2 sm:px-3 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30"
                     >
                     {skill}
                     </motion.span>
@@ -189,14 +243,19 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
             )}
         </div>
 
-        {/* Mobile Floating Tags - Shown below card on mobile */}
+        {/* Mobile Floating Tags - Animación más simple */}
         <div className="sm:hidden mt-6 flex flex-wrap justify-center gap-2">
             {floatingTags.slice(0, 4).map((tag, index) => (
             <motion.div
                 key={tag.id}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2 + index * 0.1 }}
+                initial={{ opacity: 0, y: 10 }} // Animación más simple
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  delay: 0.8 + index * 0.08,
+                  duration: 0.3,
+                  ease: "easeOut"
+                }}
+                whileTap={{ scale: 0.95 }} // Feedback táctil
                 className={`flex items-center space-x-2 px-3 py-1.5 rounded-full bg-gradient-to-r ${tag.color} backdrop-blur-sm`}
             >
                 <tag.icon className="w-3 h-3 text-white" />
