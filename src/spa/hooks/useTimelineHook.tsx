@@ -53,12 +53,12 @@ export const useTimelineHook = () => {
     {
       id: 2,
       type: 'education',
-      title: `${isSpanish ? 'Tecnólogo en Análisis y Desarrollo de Software' : 'Software Analysis and Development Technologist'}`,
-      company: 'SENA',
+      title: `${isSpanish ? 'Análisista y Desarrollador de Software' : 'Software Analysis and Development Technologist'}`,
+      company: '',
       location: 'Itagüí, Colombia',
       date: '2022 - 2024',
       current: false,
-      description: `${isSpanish ? 'Formación técnica en desarrollo de software con énfasis en análisis de sistemas, programación y diseño de bases de datos' : 'Technical training in software development with emphasis on systems analysis, programming and database design'}`,
+      description: `${isSpanish ? 'Formación en desarrollo de software con énfasis en análisis de sistemas, programación y diseño de bases de datos' : 'Technical training in software development with emphasis on systems analysis, programming and database design'}`,
       achievements: [
         `${isSpanish ? 'Especialización en análisis de sistemas y arquitectura de software' : 'Specialization in systems analysis and software architecture'}`,
         `${isSpanish ? 'Dominio de programación orientada a objetos y paradigmas de desarrollo' : 'Mastery of object-oriented programming and development paradigms'}`,

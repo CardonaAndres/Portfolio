@@ -118,7 +118,7 @@ export const ProjectCard = ({ currentProject, activeProject, setHoveredTech }: P
                 transition={{ duration: 0.2 }}
                 className="ml-2 text-blue-400 text-sm"
               >
-                {isMobile ? '👆' : 'ℹ️'}
+                {isMobile ? `${isSpanish ? 'Más info' : 'More info'} 👆` :  `${isSpanish ? 'Más info' : 'More info'} ℹ️`}
               </motion.span>
             </motion.p>
 

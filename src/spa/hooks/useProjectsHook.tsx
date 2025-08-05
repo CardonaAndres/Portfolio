@@ -10,7 +10,7 @@ export const useProjectsHook = () => {
             id: 1,
             title: `${isSpanish ? 'Belleza Perfecta' : 'Perfect Beauty'}`,
             subtitle: `${isSpanish ? 'Plataforma de gestión administrativa y comercial para optimizar procesos internos.' : 'Administrative and commercial management platform to optimize internal processes.'}`,
-            description: `${isSpanish ? 'Belleza Perfecta es un sistema administrativo integral diseñado para optimizar la gestión operativa, comercial y financiera de la empresa homónima, brindando un control eficiente y centralizado de sus procesos.' : 'Perfect Beauty is a comprehensive administrative system designed to optimize the operational, commercial, and financial management of the company of the same name, providing efficient and centralized control of its processes.'}`,
+            description: `${isSpanish ? 'Belleza Perfecta es un sistema administrativo integral diseñado para optimizar la gestión operativa, comercial y financiera de la empresa, brindando un control eficiente y centralizado de sus procesos.' : 'Perfect Beauty is a comprehensive administrative system designed to optimize the operational, commercial, and financial management of the company of the same name, providing efficient and centralized control of its processes.'}`,
             longDescription: `${isSpanish ? 'Belleza Perfecta permite gestionar clientes, productos, usuarios y facturación interna, mejorando el control administrativo y comercial. Ofrece facturación automatizada, control de inventario, descarga de facturas en PDF, gestión de usuarios con roles, reportes filtrables y exportables, historial de actividades y una estructura adaptable para facilitar su crecimiento y despliegue.' : 'Perfect Beauty allows managing clients, products, users, and internal invoicing, improving administrative and commercial control. It offers automated invoicing, inventory control, PDF invoice downloads, user management with roles, filterable and exportable reports, activity history, and an adaptable structure to facilitate its growth and deployment.'}`,
             technologies: ["TypeScript", "React + TS", "Tailwind CSS", "Node.js", "NestJS", "MySQL", "Docker"],
             features : [
@@ -26,7 +26,7 @@ export const useProjectsHook = () => {
             color: "from-yellow-500 via-yellow-300 to-yellow-100",
             url : 'https://belleza-perfecta.com/',
             images_urls : [
-                '/assets/imgs/projects/main/bellezaperfecta/BellezaPerfecta.webp',
+                '/assets/imgs/projects/main/bellezaperfecta/BellezaPerfecta.webp'
             ],
             private: true
         },

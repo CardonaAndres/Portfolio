@@ -11,13 +11,16 @@ export const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const { socialMediaLinks } = useHeroHook();
 
   useEffect(() => {
-    const handleMouseMove = (e : any) => setMousePosition({ x: e.clientX, y: e.clientY });
-    window.addEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e: any) => setMousePosition({ x: e.clientX, y: e.clientY });
+    const handleScroll = () => setScrollY(window.scrollY);
     
-    // Check if mobile
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
 
     checkMobile();
@@ -25,52 +28,74 @@ export const Hero = () => {
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', checkMobile);
     };
   }, []);
 
+  // Parallax effect for background elements
+  const parallaxY = scrollY * 0.5;
+
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden flex items-center">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(10,112,236,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(10,112,236,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
-        
-        {/* Gradient Orbs */}
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
+    <section className="relative min-h-screen  overflow-hidden flex items-center">
+      {/* Enhanced Animated Background */}
+      <div 
+        className="absolute inset-0"
+        style={{ transform: `translateY(${parallaxY}px)` }}
+      >
+        {/* Animated Grid Pattern */}
+        <motion.div 
+          className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"
+          animate={{ 
+            backgroundPosition: ['0px 0px', '60px 60px'],
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            ease: "linear" 
           }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
         />
+
+        {/* Floating Particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400/40 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
       </div>
+
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1, ease: "easeOut" }}
               className="text-center lg:text-left"
             >
-              {/* Name */}
+
+              {/* Enhanced Name */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4"
+                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3"
               >
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 mr-3">
                   Andrés  
@@ -79,34 +104,50 @@ export const Hero = () => {
 
               </motion.h1>
 
-              {/* Title */}
-              <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }} className="text-xl sm:text-2xl text-gray-200 mb-6"
+              {/* Enhanced Title */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }} 
+                className="mb-8"
               >
-                { isSpanish ? 'Desarrollador De Software' : 'Full Stack Developer' }
-                <span className="block text-lg text-gray-300 mt-2">
-                { isSpanish ? 'Especialista Backend • Experto en el ecosistema JavaScript' 
-                  : 'Backend Specialist • JavaScript Ecosystem Expert' 
-                }
-                </span>
-              </motion.p>
+                <h2 className="text-1xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400 mb-3">
+                  {isSpanish ? 'Desarrollador De Software' : 'Full Stack Developer'}
+                </h2>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                  {[
+                    isSpanish ? 'Especialista Backend' : 'Backend Specialist',
+                    isSpanish ? 'Experto JavaScript' : 'JavaScript Expert'
+                  ].map((tag, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                      className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-400/20 text-blue-300 text-sm font-medium backdrop-blur-sm"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
 
-              {/* Description */}
+              {/* Enhanced Description */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-gray-200 mb-8 max-w-xl mx-auto lg:mx-0"
+                className="text-lg text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
               >
-                { texts.description }
+                {texts.description}
               </motion.p>
 
-              {/* Contact Info */}
+              {/* Enhanced Contact Info */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8 text-sm"
+                className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8"
               >
                 <a href="mailto:11cardona31@gmail.com" className="flex items-center space-x-2 text-gray-200 hover:text-blue-400 transition-colors">
                   <Mail className="w-4 h-4" />
@@ -118,21 +159,28 @@ export const Hero = () => {
                 </a>
               </motion.div>
 
-              {/* CTA Buttons */}
-              <motion.div onClick={() => window.location.href = '#projects'} 
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }} className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
-                <motion.button whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }} className="group flex items-center space-x-2 px-8 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-all duration-300 bg-white/20"
+              {/* Enhanced CTA Button */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }} 
+                className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10"
+              >
+                <motion.button 
+                  onClick={() => window.location.href = '#projects'}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative flex items-center space-x-3 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold overflow-hidden transition-all duration-300"
                 >
-                  <Code2 className="w-4 h-4" />
-                  <span>
-                    { isSpanish ? 'Softwares que cuentan historias' : 'Software that tells stories' }
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 transition-opacity duration-300" />
+                  <Code2 className="w-5 h-5 relative z-10" />
+                  <span className="relative z-10">
+                    {isSpanish ? 'Ver Mis Proyectos' : 'View My Projects'}
                   </span>
                 </motion.button>
               </motion.div>
 
-              {/* Social Links */}
+              {/* Enhanced Social Links */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -145,26 +193,42 @@ export const Hero = () => {
                     href={item.url}
                     aria-label={`Link to ${item.name}`}
                     target="_blank"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="p-3 rounded-full bg-white/10 text-gray-300 hover:bg-blue-500/20 hover:text-blue-400 transition-all duration-300"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.9 + index * 0.1 }}
+                    whileHover={{ 
+                      scale: 1.2, 
+                      rotate: 10,
+                      boxShadow: "0 10px 25px rgba(59, 130, 246, 0.4)"
+                    }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-4 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-blue-500/20 hover:border-blue-400/40 hover:text-blue-300 transition-all duration-300 group"
                   >
-                    <item.icon className="w-5 h-5" />
+                    <item.icon className="w-6 h-6 group-hover:drop-shadow-lg" />
                   </motion.a>
                 ))}
               </motion.div>
             </motion.div>
 
-            {/* Right Content - 3D Card with Floating Tags */}
-            <Card3D 
-              setIsHovered={setIsHovered} 
-              isHovered={isHovered} 
-              isMobile={isMobile} 
-              mousePosition={mousePosition}
-            />
+            {/* Right Content - Enhanced 3D Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.1 }}
+              className="relative"
+            >
+              <Card3D 
+                setIsHovered={setIsHovered} 
+                isHovered={isHovered} 
+                isMobile={isMobile} 
+                mousePosition={mousePosition}
+              />
+              
+            </motion.div>
           </div>
         </div>
       </div>
+
     </section>
   );
 };
