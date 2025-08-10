@@ -24,7 +24,7 @@ export const useProjectsHook = () => {
             teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
             impact: `${isSpanish ? 'Reducción del 65% en tiempos de gestión' : '65% reduction in management time'}`,
             color: "from-yellow-500 via-yellow-300 to-yellow-100",
-            url : 'https://belleza-perfecta.com/',
+            url : 'https://belleza-perfecta.vercel.app/',
             images_urls : [
                 '/assets/imgs/projects/main/bellezaperfecta/BellezaPerfecta.webp'
             ],
