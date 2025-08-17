@@ -5,6 +5,7 @@ import {
     Box, 
     Braces, 
     Code2, 
+    CuboidIcon, 
     Database, 
     FileCode2, 
     GitBranch, 
@@ -34,6 +35,7 @@ export const useSkillsHook = () => {
         { name: 'TypeScript', icon: FileCode2, level: defineSkillLevel.Advanced, color: 'from-blue-500 to-blue-600' },
         { name: 'Python', icon: Code2, level: defineSkillLevel.Intermediate, color: 'from-green-500 to-green-600' },
         { name: 'PHP', icon: Code2, level: defineSkillLevel.Intermediate, color: 'from-purple-500 to-purple-600' },
+        { name: 'Java', icon: CuboidIcon, level: defineSkillLevel.Basic, color: 'from-red-500 to-red-600' },
     ];
 
     const levelColors: LevelColors = {
@@ -55,8 +57,9 @@ export const useSkillsHook = () => {
             skills: [
                 { name: 'HTML / CSS', icon: Box, level: defineSkillLevel.Expert, color: 'from-orange-500 to-red-500' },
                 { name: 'React', icon: Layers, level: defineSkillLevel.Expert, color: 'from-cyan-500 to-blue-500' },
-                { name: 'Vue.js', icon: Layers, level: defineSkillLevel.Basic, color: 'from-cyan-500 to-blue-500' },
+                { name: 'Vue.js', icon: Layers, level: defineSkillLevel.Basic, color: 'from-green-500 to-green-500' },
                 { name: 'Tailwind CSS', icon: Palette, level: defineSkillLevel.Advanced, color: 'from-teal-500 to-cyan-500' },
+                { name: 'Bootstrap', icon: Palette, level: defineSkillLevel.Basic, color: 'from-violet-500 to-violet-500' },
             ]
         },
         {
