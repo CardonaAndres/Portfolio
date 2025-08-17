@@ -30,7 +30,6 @@ export const useSkillsHook = () => {
     }
 
     const programmingLanguages: TechSkill[] = [
-        { name: 'HTML / CSS', icon: Box, level: defineSkillLevel.Expert, color: 'from-orange-500 to-red-500' },
         { name: 'JavaScript', icon: Braces, level: defineSkillLevel.Expert, color: 'from-yellow-500 to-yellow-600' },
         { name: 'TypeScript', icon: FileCode2, level: defineSkillLevel.Advanced, color: 'from-blue-500 to-blue-600' },
         { name: 'Python', icon: Code2, level: defineSkillLevel.Intermediate, color: 'from-green-500 to-green-600' },
@@ -54,6 +53,7 @@ export const useSkillsHook = () => {
             icon: MonitorSmartphone,
             color: 'from-purple-600 to-pink-600',
             skills: [
+                { name: 'HTML / CSS', icon: Box, level: defineSkillLevel.Expert, color: 'from-orange-500 to-red-500' },
                 { name: 'React', icon: Layers, level: defineSkillLevel.Expert, color: 'from-cyan-500 to-blue-500' },
                 { name: 'Vue.js', icon: Layers, level: defineSkillLevel.Basic, color: 'from-cyan-500 to-blue-500' },
                 { name: 'Tailwind CSS', icon: Palette, level: defineSkillLevel.Advanced, color: 'from-teal-500 to-cyan-500' },
