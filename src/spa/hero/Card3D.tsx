@@ -77,44 +77,47 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
         className="relative mx-auto max-w-md"
         style={{ perspective: isMobile ? 'none' : 1000 }}
         >
-        {/* Floating Tags around the card - Solo desktop */}
-        {!isMobile && floatingTags.map((tag, index) => (
-            <motion.div
-            key={tag.id}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              delay: 0.6 + index * 0.08, // Delays más cortos
-              duration: 0.4,
-              ease: "easeOut"
-            }}
-            style={{
-                position: 'absolute',
-                ...tag.position,
-                transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`, // Menos movimiento
-                zIndex: 10,
-            }}
-            className="hidden sm:block"
-            >
-            <motion.div
-                animate={{
-                y: [0, -8, 0], // Menos movimiento vertical
-                rotate: [-1, 1, -1], // Menos rotación
-                }}
-                transition={{ 
-                  duration: 3 + index * 0.5, // Más variación pero más rápido
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-                whileHover={{ scale: 1.05, rotate: 0 }} // Escala más sutil
-                className={`group relative flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r ${tag.color} backdrop-blur-sm cursor-pointer shadow-lg`}
-            >
-                <tag.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
-                <span className="text-xs sm:text-sm font-medium text-white whitespace-nowrap">{tag.text}</span>
-                <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-            </motion.div>
-            </motion.div>
-        ))}
+        {/* Floating Tags around the card - Solo desktop y solo cuando showCode es true */}
+        <AnimatePresence>
+          {!isMobile && showCode && floatingTags.map((tag, index) => (
+              <motion.div
+              key={tag.id}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ 
+                delay: 0.6 + index * 0.08, // Delays más cortos
+                duration: 0.4,
+                ease: "easeOut"
+              }}
+              style={{
+                  position: 'absolute',
+                  ...tag.position,
+                  transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`, // Menos movimiento
+                  zIndex: 10,
+              }}
+              className="hidden sm:block"
+              >
+              <motion.div
+                  animate={{
+                  y: [0, -8, 0], // Menos movimiento vertical
+                  rotate: [-1, 1, -1], // Menos rotación
+                  }}
+                  transition={{ 
+                    duration: 3 + index * 0.5, // Más variación pero más rápido
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  whileHover={{ scale: 1.05, rotate: 0 }} // Escala más sutil
+                  className={`group relative flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r ${tag.color} backdrop-blur-sm cursor-pointer shadow-lg`}
+              >
+                  <tag.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                  <span className="text-xs sm:text-sm font-medium text-white whitespace-nowrap">{tag.text}</span>
+                  <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              </motion.div>
+              </motion.div>
+          ))}
+        </AnimatePresence>
 
         {/* Glowing Background - Reducido en móvil */}
         {!isMobile && (<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl" />)}
@@ -213,9 +216,9 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
                             </div>
                         ) : (
                             // Photo Section - Más contenido y mejor distribución
-                            <div className="flex-1 flex flex-col justify-between py-4">
+                            <div className="flex-1 flex flex-col justify-between">
                                 {/* Header decorativo */}
-                                <div className="flex items-center justify-center space-x-2 mb-6">
+                                <div className="flex items-center justify-center space-x-2 mb-4">
                                     <div className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent flex-1"></div>
                                     <div className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
                                         <span className="text-blue-400 text-xs font-medium">DEVELOPER</span>
@@ -224,9 +227,9 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
                                 </div>
 
                                 {/* Foto y info principal */}
-                                <div className="flex flex-col items-center space-y-6 flex-1 justify-center">
+                                <div className="flex flex-col items-center space-y-4 flex-1">
                                     <div className="relative">
-                                        <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1">
+                                        <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1">
                                             <img
                                                 src="/assets/imgs/me/FotoHV.webp"
                                                 alt="Andrés Cardona"
@@ -242,23 +245,84 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
                                         </div>
                                     </div>
                                     
-                                    <div className="text-center space-y-3">
-                                        <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                                    <div className="text-center space-y-2">
+                                        <h3 className="text-xl sm:text-2xl font-bold text-white">
                                             Andrés Cardona
                                         </h3>
-                                        <div className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
-                                            <span className="text-blue-400 text-sm sm:text-base font-medium">
+                                        <div className="px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
+                                            <span className="text-blue-400 text-sm font-medium">
                                                 { isSpanish ? 'Desarrollador De Software' : 'Full Stack Developer' }
                                             </span>
                                         </div>
-                                        
-                                        {/* Info adicional */}
-                                        <div className="flex items-center justify-center space-x-4 text-gray-400 text-xs sm:text-sm mt-4">
+                                    </div>
+
+                                    {/* Info adicional expandida */}
+                                    <div className="w-full space-y-3 px-2">
+                                        {/* Stats simplificados */}
+                                        <motion.div 
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.2 }}
+                                            className="flex items-center justify-center space-x-3 text-sm text-gray-300"
+                                        >
                                             <div className="flex items-center space-x-1">
-                                                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                                                <span>1.6+ {isSpanish ? 'años exp.' : 'years exp.'}</span>
+                                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                                <span>1.6+ {isSpanish ? 'años de experiencia' : 'years experience'}</span>
                                             </div>
-                                        </div>
+                                        </motion.div>
+
+                                        {/* Tech Stack Icons */}
+                                        <motion.div 
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.4 }}
+                                            className="flex flex-wrap justify-center gap-2"
+                                        >
+                                            {[
+                                                'JavaScript', 
+                                                'TypeScript', 
+                                                'Node.js', 
+                                                'Express.js',
+                                                'NestJS',
+                                                'React',
+                                                'Docker'
+                                            ].map((tech, i) => (
+                                                <motion.div
+                                                    key={tech}
+                                                    initial={{ scale: 0 }}
+                                                    animate={{ scale: 1 }}
+                                                    transition={{ 
+                                                        delay: 0.5 + i * 0.05,
+                                                        type: "spring",
+                                                        stiffness: 260,
+                                                        damping: 20
+                                                    }}
+                                                    className="px-2 py-1 text-xs rounded-md bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-gray-300 border border-white/10"
+                                                >
+                                                    {tech}
+                                                </motion.div>
+                                            ))}
+                                        </motion.div>
+
+                                        {/* Location & Availability */}
+                                        <motion.div 
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.7 }}
+                                            className="flex items-center justify-center space-x-4 text-xs text-gray-400 pb-2"
+                                        >
+                                            <div className="flex items-center space-x-1">
+                                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                                <span>Colombia</span>
+                                            </div>
+                                            <div className="flex items-center space-x-1">
+                                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                                <span>{isSpanish ? 'Disponible' : 'Available'}</span>
+                                            </div>
+                                        </motion.div>
                                     </div>
                                 </div>
                             </div>
@@ -268,25 +332,25 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
             </div>
         </div>
 
-        {/* Mobile Floating Tags - Animación más simple */}
+        {/* Mobile Floating Tags - Siempre visibles en móvil */}
         <div className="sm:hidden mt-6 flex flex-wrap justify-center gap-2">
-            {floatingTags.slice(0, 4).map((tag, index) => (
-            <motion.div
-                key={tag.id}
-                initial={{ opacity: 0, y: 10 }} // Animación más simple
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  delay: 0.8 + index * 0.08,
-                  duration: 0.3,
-                  ease: "easeOut"
-                }}
-                whileTap={{ scale: 0.95 }} // Feedback táctil
-                className={`flex items-center space-x-2 px-3 py-1.5 rounded-full bg-gradient-to-r ${tag.color} backdrop-blur-sm`}
-            >
-                <tag.icon className="w-3 h-3 text-white" />
-                <span className="text-xs font-medium text-white">{tag.text}</span>
-            </motion.div>
-            ))}
+          {floatingTags.slice(0, 4).map((tag, index) => (
+          <motion.div
+              key={tag.id}
+              initial={{ opacity: 0, y: 10 }} // Animación más simple
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                delay: 0.8 + index * 0.08,
+                duration: 0.3,
+                ease: "easeOut"
+              }}
+              whileTap={{ scale: 0.95 }} // Feedback táctil
+              className={`flex items-center space-x-2 px-3 py-1.5 rounded-full bg-gradient-to-r ${tag.color} backdrop-blur-sm`}
+          >
+              <tag.icon className="w-3 h-3 text-white" />
+              <span className="text-xs font-medium text-white">{tag.text}</span>
+          </motion.div>
+          ))}
         </div>
         </motion.div>
     </motion.div>

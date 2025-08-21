@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef, useMemo, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTimelineHook } from '../hooks/useTimelineHook';
 import type { ItemType } from '../assets/ts/types';
 import { TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -13,17 +13,26 @@ export const Timeline = () => {
   const [selectedType, setSelectedType] = useState<ItemType | 'all'>('all');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const filteredData = selectedType === 'all' ? timelineData : timelineData.filter(item => item.type === selectedType);
+  // Memoizar datos filtrados para evitar recálculos
+  const filteredData = useMemo(() => 
+    selectedType === 'all' ? timelineData : timelineData.filter(item => item.type === selectedType),
+    [selectedType, timelineData]
+  );
   
-  const handleItemClick = (itemId: number) => setActiveItem(activeItem === itemId ? null : itemId);
+  // Callbacks optimizados
+  const handleItemClick = useCallback((itemId: number) => {
+    setActiveItem(prev => prev === itemId ? null : itemId);
+  }, []);
   
-  const handleTypeSelect = (typeId: ItemType | 'all') => {
+  const handleTypeSelect = useCallback((typeId: ItemType | 'all') => {
     setSelectedType(typeId);
     setActiveItem(null);
-    if (scrollContainerRef.current) scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-  };
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  }, []);
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = useCallback((direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const scrollAmount = 400;
       scrollContainerRef.current.scrollBy({
@@ -31,29 +40,38 @@ export const Timeline = () => {
         behavior: 'smooth'
       });
     }
-  };
+  }, []);
+
+  // Detectar si es móvil para renderizado condicional
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
 
   return (
     <section className="relative py-20 bg-black overflow-hidden">
-      {/* Background Effects */}
+      {/* Background Effects - Simplificados para móvil */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(10,112,236,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(10,112,236,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
-        <motion.div
-          animate={{
-            y: [0, -50, 0],
-            x: [0, 50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, 50, 0],
-            x: [0, -50, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity }}
-          className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
-        />
+        
+        {/* Animaciones de fondo solo en desktop */}
+        {!isMobile && (
+          <>
+            <motion.div
+              animate={{
+                y: [0, -50, 0],
+                x: [0, 50, 0],
+              }}
+              transition={{ duration: 20, repeat: Infinity }}
+              className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+            />
+            <motion.div
+              animate={{
+                y: [0, 50, 0],
+                x: [0, -50, 0],
+              }}
+              transition={{ duration: 25, repeat: Infinity }}
+              className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+            />
+          </>
+        )}
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,7 +79,7 @@ export const Timeline = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
@@ -89,7 +107,7 @@ export const Timeline = () => {
           </p>
         </motion.div>
 
-        {/* Filtros */}
+        {/* Filtros - Optimizados con will-change */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,29 +115,31 @@ export const Timeline = () => {
           transition={{ delay: 0.2 }}
           className="flex flex-wrap justify-center gap-2 mb-16"
         >
-          {types.map((type) => (
-            <motion.button
-              key={type.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleTypeSelect(type.id)}
-              className={`group relative flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
-                selectedType === type.id
-                  ? 'text-white'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              {selectedType === type.id && (
-                <motion.div
-                  layoutId="activeTab"
-                  className={`absolute inset-0 bg-gradient-to-r ${type.color} rounded-full`}
-                  transition={{ type: "spring", duration: 0.6 }}
-                />
-              )}
-              <type.icon className="w-4 h-4 relative z-10" />
-              <span className="font-medium relative z-10">{type.label}</span>
-            </motion.button>
-          ))}
+          <AnimatePresence mode="wait">
+            {types.map((type) => (
+              <motion.button
+                key={type.id}
+                whileHover={!isMobile ? { scale: 1.05 } : {}}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleTypeSelect(type.id)}
+                className={`group relative flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 will-change-transform ${
+                  selectedType === type.id
+                    ? 'text-white'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                {selectedType === type.id && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className={`absolute inset-0 bg-gradient-to-r ${type.color} rounded-full`}
+                    transition={{ type: "spring", duration: 0.6 }}
+                  />
+                )}
+                <type.icon className="w-4 h-4 relative z-10" />
+                <span className="font-medium relative z-10">{type.label}</span>
+              </motion.button>
+            ))}
+          </AnimatePresence>
         </motion.div>
 
         {/* Desktop Horizontal Timeline */}
@@ -203,21 +223,31 @@ export const Timeline = () => {
           </div>
         </div>
 
-        {/* Mobile Vertical Timeline */}
+        {/* Mobile Vertical Timeline - Optimizado */}
         <div className="lg:hidden">
           {/* Timeline Line - Vertical */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/20 via-purple-500/20 to-blue-500/20" />
 
-          {filteredData.map((item, index) => (
-            <TimelineCard
-              key={`vertical-${selectedType}-${item.id}`}
-              item={item}
-              index={index}
-              isActive={activeItem === item.id}
-              onClick={() => handleItemClick(item.id)}
-              horizontal={false}
-            />
-          ))}
+          {/* Renderizado optimizado con lazy loading */}
+          <AnimatePresence mode="popLayout">
+            {filteredData.map((item, index) => (
+              <motion.div
+                key={`vertical-${selectedType}-${item.id}`}
+                initial={false}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <TimelineCard
+                  item={item}
+                  index={index}
+                  isActive={activeItem === item.id}
+                  onClick={() => handleItemClick(item.id)}
+                  horizontal={false}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

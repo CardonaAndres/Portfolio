@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import type { TimelineItem } from '../assets/ts/types';
 import { Calendar, CheckCircle, ChevronDown, MapPin, Target } from 'lucide-react';
+import { useLanguage } from '@/core/context/LanguageContext';
 
 interface TimelineCardProps {
   item: TimelineItem;
@@ -11,7 +12,7 @@ interface TimelineCardProps {
 }
 
 export const TimelineCard = ({ item, index, isActive, onClick, horizontal = false }: TimelineCardProps) => {
-
+  const isSpanish = useLanguage().language == 'ES';
   // Horizontal Layout
   if (horizontal) {
     return (
@@ -82,7 +83,9 @@ export const TimelineCard = ({ item, index, isActive, onClick, horizontal = fals
                 >
                   <h4 className="text-sm font-medium text-white mb-3 flex items-center justify-center space-x-2">
                     <Target className="w-4 h-4 text-blue-400" />
-                    <span>Logros y Responsabilidades</span>
+                    <span>
+                      {isSpanish ? 'Logros y Responsabilidades' : 'Achievements and responsibilities'}
+                    </span>
                   </h4>
                   <ul className="space-y-2">
                     {item.achievements.map((achievement, i) => (

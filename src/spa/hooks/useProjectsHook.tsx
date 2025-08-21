@@ -12,14 +12,14 @@ export const useProjectsHook = () => {
           subtitle: `${isSpanish ? 'Sistema integral de Seguridad y Salud en el Trabajo basado en microservicios.' : 'Comprehensive Occupational Health and Safety system based on microservices.'}`,
           description: `${isSpanish ? 'Plataforma modular para la gestión de personal, exámenes médicos, inspecciones, accidentalidad y equipos de protección personal.' : 'Modular platform for managing personnel, medical exams, inspections, accidents, and personal protective equipment.'}`,
           longDescription: `${isSpanish ? 'El proyecto SST está diseñado bajo una arquitectura de microservicios que integra módulos clave para la gestión de seguridad y salud en el trabajo. Incluye ingreso y seguimiento médico de personal, vigilancia epidemiológica, control de EPP y ergonomía, inspecciones de seguridad y gestión de accidentalidad e higiene ocupacional. Con autenticación centralizada por JWT, comunicación RESTful y cumplimiento de normativas legales, proporciona una solución robusta, escalable y adaptable a las necesidades empresariales.' : 'The SST project is designed with a microservices architecture integrating key modules for occupational health and safety management. It includes personnel onboarding and medical monitoring, epidemiological surveillance, PPE and ergonomics control, safety inspections, and accident and occupational hygiene management. With centralized JWT authentication, RESTful communication, and compliance with legal requirements, it provides a robust, scalable, and adaptable solution for business needs.'}`,
-          technologies: ["JavaScript", "TypeScript", "Node.js", "Express.js", "NestJS", "React", "Vite", "Tailwind CSS", "SQL Server", "Docker", "Docker Compose"],
+          technologies: ["JavaScript", "TypeScript", "Node.js", "Express.js", "NestJS", "React", "Tailwind CSS", "SQL Server", "Docker", "Docker Compose", "Microservices"],
           features : [
             `${isSpanish ? 'Gestión de Personal y Seguimiento Médico' : 'Personnel Management & Medical Monitoring'}`, 
             `${isSpanish ? 'Vigilancia Epidemiológica y Salud Ocupacional' : 'Epidemiological Surveillance & Occupational Health'}`, 
             `${isSpanish ? 'Control de EPP, Ergonomía e Inspecciones' : 'PPE, Ergonomics & Inspections Control'}`, 
             `${isSpanish ? 'Gestión de Accidentalidad y Seguridad Laboral' : 'Accident Management & Workplace Safety'}`
           ],
-          role: `${isSpanish ? 'Desarrollador Full Stack' : 'Full Stack Developer'}`,
+          role: `${isSpanish ? 'Desarrollador Full Stack Líder' : 'Lead Full Stack Developer'}`,
           duration: `4 ${isSpanish ? 'meses' : 'months'}`,
           teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
           impact: `${isSpanish ? 'Digitalización completa de procesos de SST, mejorando trazabilidad y cumplimiento legal.' : 'Full digitization of OHS processes, improving traceability and legal compliance.'}`,
@@ -29,33 +29,31 @@ export const useProjectsHook = () => {
               '/assets/imgs/projects/main/SstNS/img1.webp'
           ],
           private: true
-        },
-        /*
+        },    
         {
           id: 2,
-          title: `${isSpanish ? 'BuyOrder NS' : 'BuyOrder NS'}`,
-          subtitle: `${isSpanish ? 'Plataforma de gestión administrativa y comercial para optimizar procesos internos.' : 'Administrative and commercial management platform to optimize internal processes.'}`,
-          description: `${isSpanish ? 'Belleza Perfecta es un sistema administrativo integral diseñado para optimizar la gestión operativa, comercial y financiera de la empresa, brindando un control eficiente y centralizado de sus procesos.' : 'Perfect Beauty is a comprehensive administrative system designed to optimize the operational, commercial, and financial management of the company of the same name, providing efficient and centralized control of its processes.'}`,
-          longDescription: `${isSpanish ? 'Belleza Perfecta permite gestionar clientes, productos, usuarios y facturación interna, mejorando el control administrativo y comercial. Ofrece facturación automatizada, control de inventario, descarga de facturas en PDF, gestión de usuarios con roles, reportes filtrables y exportables, historial de actividades y una estructura adaptable para facilitar su crecimiento y despliegue.' : 'Perfect Beauty allows managing clients, products, users, and internal invoicing, improving administrative and commercial control. It offers automated invoicing, inventory control, PDF invoice downloads, user management with roles, filterable and exportable reports, activity history, and an adaptable structure to facilitate its growth and deployment.'}`,
-          technologies: ["JavaScript", "TypeScript", "Node.js", "Express.js", "NestJS", "React", "Vite", "Tailwind CSS", "SQL Server", "Docker", "Docker Compose"],
-          features : [
-            `${isSpanish ? 'Gestión de Clientes' : 'Client Management'}`, 
-            `${isSpanish ? 'Control de Inventario' : 'Inventory Control'}`, 
-            `${isSpanish ? 'Reportes Personalizados' : 'Custom Reports'}`, 
-            `${isSpanish ? 'Facturación Automatizada' : 'Automated Invoicing'}`
+          title: `BuyOrder NS`,
+          subtitle: `${isSpanish ? 'Sistema de gestión de órdenes de compra nacionales con arquitectura de microservicios' : 'National purchase order management system with microservices architecture'}`,
+          description: `${isSpanish ? 'Plataforma web para la gestión y seguimiento de órdenes de compra nacionales (OCN), mejorando la comunicación con proveedores, el control logístico del almacén y la calificación del cumplimiento de los proveedores.' : 'Web platform for managing and tracking national purchase orders (NPO), improving supplier communication, warehouse logistics control, and supplier compliance rating.'}`,
+          longDescription: `${isSpanish ? 'BuyOrder NS es una plataforma enfocada en la gestión integral de órdenes de compra nacionales. El sistema incluye tres módulos principales: Seguimiento OCN que permite envío de recordatorios automáticos a proveedores dos veces por semana, un formulario donde los proveedores pueden comentar sobre ítems específicos y la generación automática de cartas de atraso para órdenes no cumplidas. El módulo de Almacén facilita al personal registrar la recepción física de productos con un simple botón por ítem. El módulo de Calificación evalúa el desempeño de proveedores calculando porcentajes de cumplimiento basados en fechas de entrega y motivos de retraso. Todo el sistema está protegido con autenticación centralizada y roles diferenciados.' : 'BuyOrder NS is a platform focused on comprehensive management of national purchase orders. The system includes three main modules: NPO Tracking that enables automatic reminder sending to suppliers twice a week, a form where suppliers can comment on specific items, and automatic generation of delay letters for unfulfilled orders. The Warehouse module allows staff to easily register physical product reception with a simple button per item. The Rating module evaluates supplier performance by calculating compliance percentages based on delivery dates and delay reasons. The entire system is protected with centralized authentication and differentiated roles.'}`,
+          technologies: ["JavaScript", "React", "Tailwind CSS", "Node.js", "Express.js", "SQL Server", "Microservices", "Docker"],
+          features: [
+            `${isSpanish ? 'Seguimiento OCN con recordatorios automáticos' : 'NPO Tracking with automatic reminders'}`, 
+            `${isSpanish ? 'Gestión de recepción en almacén' : 'Warehouse reception management'}`, 
+            `${isSpanish ? 'Sistema de calificación de proveedores' : 'Supplier rating system'}`, 
+            `${isSpanish ? 'Gestión automática de cartas de atraso' : 'Automatic delay letter generation'}`
           ],
-          role: `${isSpanish ? 'Desarrollador Full Stack' : 'Full Stack Developer'}`,
-          duration: `2 ${isSpanish ? 'meses' : 'months'}`,
-          teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
-          impact: `${isSpanish ? 'Reducción del 65% en tiempos de gestión' : '65% reduction in management time'}`,
+          role: `${isSpanish ? 'Desarrollador Full Stack Líder' : 'Lead Full Stack Developer'}`,
+          duration: `${isSpanish ? '2 meses' : '2 months'}`,
+          teamSize: `2 ${isSpanish ? 'personas' : 'people'}`,
+          impact: `${isSpanish ? 'Automatización del seguimiento de órdenes de compra, mejora en la comunicación con proveedores y optimización del control logístico.' : 'Automation of purchase order tracking, improved supplier communication, and optimized logistics control.'}`,
           color: "from-teal-500 via-red-400 to-red-200",
-          url : 'https://belleza-perfecta.vercel.app/',
-          images_urls : [
-              '/assets/imgs/projects/main/BuyOrderNS/img1.webp'
+          url: '',
+          images_urls: [
+            '/assets/imgs/projects/main/BuyOrderNS/img1.webp'
           ],
           private: true
         },
-        */
         {
           id: 3,
           title: `Factus`,
