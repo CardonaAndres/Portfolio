@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Globe, ChevronDown, Layers } from 'lucide-react';
 import { useNavigation } from '@/core/hooks/useNavigation';
@@ -8,23 +8,79 @@ export const Navbar = () => {
   const { navItems } = useNavigation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [activeSection, setActiveSection] = useState<string>('about');
   const [hoveredItem, setHoveredItem] = useState<null | string>(null);
   const { language, changeLanguage, languages } = useLanguage();
   const [langOpen, setLangOpen] = useState(false);
+  
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    const updateScrollDirection = () => {
+      const scrollY = window.scrollY;
+      const direction = scrollY > lastScrollY.current ? 'down' : 'up';
+      
+      // Solo ocultar si se scrollea hacia abajo más de 20px y no está al inicio
+      if (direction === 'down' && scrollY > 70 && scrollY > lastScrollY.current) {
+        setVisible(false);
+      } else if (direction === 'up' || scrollY < 70) {
+        setVisible(true);
+      }
+      
+      // Actualizar estado de scrolled para el backdrop
+      setScrolled(scrollY > 20);
+      
+      lastScrollY.current = scrollY > 0 ? scrollY : 0;
+      ticking.current = false;
+    };
+
+    const requestTick = () => {
+      if (!ticking.current) {
+        requestAnimationFrame(updateScrollDirection);
+        ticking.current = true;
+      }
+    };
+
+    const handleScroll = () => requestTick();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Cerrar menús cuando se hace invisible el navbar
+  useEffect(() => {
+    if (!visible) {
+      setIsOpen(false);
+      setLangOpen(false);
+    }
+  }, [visible]);
+
+  const navbarVariants = {
+    visible: {
+      y: 0 as number,
+      transition: {
+        duration: 0.1,
+        ease: [0.4, 0.0, 0.2, 1] as const
+      }
+    },
+    hidden: {
+      y: '-100%',
+      transition: {
+        duration: 0.1,
+        ease: [0.4, 0.0, 0.2, 1] as const
+      }
+    }
+  };
 
   return (
     <>
       {/* Navbar */}
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        initial="visible"
+        animate={visible ? "visible" : "hidden"}
+        variants={navbarVariants}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled 
             ? 'backdrop-blur-xl bg-black/70 shadow-2xl shadow-blue-500/10' 
@@ -119,9 +175,9 @@ export const Navbar = () => {
                 <AnimatePresence>
                   {langOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
                       className="absolute top-full mt-2 right-0 w-48 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden"
                     >
                       {languages.map((lang, index) => (
@@ -173,13 +229,20 @@ export const Navbar = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="relative p-2 rounded-lg bg-white/10 backdrop-blur-sm"
               >
-                <Layers className="w-5 h-5 text-white" />
-                {/* Notification Dot */}
                 <motion.div
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full"
-                />
+                  animate={isOpen ? { rotate: 180 } : { rotate: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Layers className="w-5 h-5 text-white" />
+                </motion.div>
+                {/* Notification Dot */}
+                {!isOpen && (
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full"
+                  />
+                )}
               </motion.button>
             </div>
           </div>
@@ -195,9 +258,12 @@ export const Navbar = () => {
               className="lg:hidden border-t border-white/10 bg-black/80 backdrop-blur-xl"
             >
               <div className="container mx-auto px-4 py-2">
-                {languages.map((lang) => (
+                {languages.map((lang, index) => (
                   <motion.button
                     key={lang.code}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
                     whileHover={{ x: 5 }}
                     onClick={() => {
                       changeLanguage(lang.code);
@@ -218,66 +284,71 @@ export const Navbar = () => {
       </motion.nav>
 
       {/* Mobile Sliding Menu */}
-      <motion.div
-        initial={false}
-        animate={{ x: isOpen ? 0 : '-100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className="fixed top-16 left-0 h-[calc(100vh-4rem)] w-72 bg-black/95 backdrop-blur-2xl z-40 lg:hidden border-r border-white/10"
-      >
-        <div className="flex flex-col h-full">
-          {/* Navigation Items */}
-          <div className="flex-1 overflow-y-auto py-8">
-            <div className="px-4 space-y-1">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -50 }}
-                  transition={{ delay: isOpen ? index * 0.1 : 0 }}
-                  onClick={() => {
-                    setActiveSection(item.id);
-                    setIsOpen(false);
-                  }}
-                  className={`flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 ${
-                    activeSection === item.id
-                      ? 'bg-blue-500/20 text-blue-400'
-                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
-                  }`}
-                >
-                  <item.icon className="w-5 h-5" />
-                  <span className="text-lg font-medium">
-                    {language === 'ES' ? item.label : item.labelEn}
-                  </span>
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="activeMobile"
-                      className="ml-auto w-1 h-8 bg-blue-500 rounded-full"
-                    />
-                  )}
-                </motion.a>
-              ))}
-              <motion.button
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -50 }}
-                transition={{ delay: isOpen ? 1 * 0.1 : 0 }}
-                className={`flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white w-full`}
-                onClick={() => {
-                  changeLanguage(`${language === 'ES' ? 'EN' : 'ES'}`)
-                  setIsOpen(!isOpen);
-                }}
-              >
-                <Globe className="w-5 h-5" />
-                <span className="text-lg font-medium">
-                  { language === 'ES' ? 'English' : 'Español' }
-                </span>
-              </motion.button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: '-100%', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: '-100%', opacity: 0 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className="fixed top-16 left-0 h-[calc(100vh-4rem)] w-72 bg-black/95 backdrop-blur-2xl z-40 lg:hidden border-r border-white/10"
+          >
+            <div className="flex flex-col h-full">
+              {/* Navigation Items */}
+              <div className="flex-1 overflow-y-auto py-8">
+                <div className="px-4 space-y-1">
+                  {navItems.map((item, index) => (
+                    <motion.a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => {
+                        setActiveSection(item.id);
+                        setIsOpen(false);
+                      }}
+                      className={`flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 ${
+                        activeSection === item.id
+                          ? 'bg-blue-500/20 text-blue-400'
+                          : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                      }`}
+                    >
+                      <item.icon className="w-5 h-5" />
+                      <span className="text-lg font-medium">
+                        {language === 'ES' ? item.label : item.labelEn}
+                      </span>
+                      {activeSection === item.id && (
+                        <motion.div
+                          layoutId="activeMobile"
+                          className="ml-auto w-1 h-8 bg-blue-500 rounded-full"
+                        />
+                      )}
+                    </motion.a>
+                  ))}
+                  <motion.button
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navItems.length * 0.1 }}
+                    className="flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white w-full"
+                    onClick={() => {
+                      changeLanguage(language === 'ES' ? 'EN' : 'ES');
+                      setIsOpen(false);
+                    }}
+                  >
+                    <Globe className="w-5 h-5" />
+                    <span className="text-lg font-medium">
+                      {language === 'ES' ? 'English' : 'Español'}
+                    </span>
+                  </motion.button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Mobile Overlay - Partial */}
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -293,4 +364,3 @@ export const Navbar = () => {
     </>
   );
 };
-

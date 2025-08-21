@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useTimelineHook } from '../hooks/useTimelineHook';
 import type { ItemType } from '../assets/ts/types';
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/core/context/LanguageContext';
 import { TimelineCard } from '../timeline/TimelineCard';
 
@@ -11,12 +11,26 @@ export const Timeline = () => {
   const { types, timelineData } = useTimelineHook();
   const [activeItem, setActiveItem] = useState<number | null>(null);
   const [selectedType, setSelectedType] = useState<ItemType | 'all'>('all');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const filteredData = selectedType === 'all' ? timelineData : timelineData.filter(item => item.type === selectedType);
+  
   const handleItemClick = (itemId: number) => setActiveItem(activeItem === itemId ? null : itemId);
+  
   const handleTypeSelect = (typeId: ItemType | 'all') => {
     setSelectedType(typeId);
-    setActiveItem(null); // Cerrar item activo al cambiar filtro
+    setActiveItem(null);
+    if (scrollContainerRef.current) scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -108,26 +122,104 @@ export const Timeline = () => {
           ))}
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Timeline Line - Desktop */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-blue-500/20 via-purple-500/20 to-blue-500/20" />
+        {/* Desktop Horizontal Timeline */}
+        <div className="relative hidden lg:block">
+          {/* Navigation Arrows */}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => scroll('left')}
+            className="absolute top-1/2 -translate-y-1/2 z-20 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm rounded-full p-3 border border-gray-600/50 transition-all duration-300 shadow-lg"
+          >
+            <ChevronLeft className="w-5 h-5 text-white" />
+          </motion.button>
 
-          <AnimatePresence mode="wait">
-            {filteredData.map((item, index) => (
-              <TimelineCard
-                key={item.id}
-                item={item}
-                index={index}
-                isActive={activeItem === item.id}
-                onClick={() => handleItemClick(item.id)}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => scroll('right')}
+            className="absolute right-1 top-1/2 -translate-y-1/2 z-20 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm rounded-full p-3 border border-gray-600/50 transition-all duration-300 shadow-lg"
+          >
+            <ChevronRight className="w-5 h-5 text-white" />
+          </motion.button>
+
+          {/* Horizontal Timeline */}
+          <div 
+            ref={scrollContainerRef}
+            className="relative overflow-x-auto pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
+            {/* Timeline Line - Horizontal */}
+            <div className="absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+
+            <div className="flex space-x-8 px-16 min-w-max">
+              {filteredData.map((item, index) => (
+                <motion.div
+                  key={`horizontal-${selectedType}-${item.id}`}
+                  initial={{ opacity: 0, x: 50, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -50, scale: 0.9 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.1,
+                    type: "spring",
+                    damping: 20,
+                    stiffness: 100
+                  }}
+                  className="relative flex flex-col items-center min-w-80 max-w-80"
+                >
+                    {/* Timeline Dot */}
+                    <motion.div
+                      whileHover={{ scale: 1.2 }}
+                      className="relative z-10 w-4 h-4 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 shadow-lg shadow-blue-400/25 mb-6 cursor-pointer"
+                      onClick={() => handleItemClick(item.id)}
+                    >
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse opacity-75" />
+                    </motion.div>
+
+                    {/* Timeline Card - Horizontal Layout */}
+                    <div className="w-full">
+                      <TimelineCard
+                        item={item}
+                        index={index}
+                        isActive={activeItem === item.id}
+                        onClick={() => handleItemClick(item.id)}
+                        horizontal={true}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+            </div>
+          </div>
+
+          {/* Scroll Indicators */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {Array.from({ length: Math.ceil(filteredData.length / 3) }).map((_, index) => (
+              <motion.div
+                key={index}
+                className="w-2 h-2 rounded-full bg-gray-600"
+                whileHover={{ scale: 1.2 }}
               />
             ))}
-          </AnimatePresence>
+          </div>
         </div>
 
+        {/* Mobile Vertical Timeline */}
+        <div className="lg:hidden">
+          {/* Timeline Line - Vertical */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/20 via-purple-500/20 to-blue-500/20" />
+
+          {filteredData.map((item, index) => (
+            <TimelineCard
+              key={`vertical-${selectedType}-${item.id}`}
+              item={item}
+              index={index}
+              isActive={activeItem === item.id}
+              onClick={() => handleItemClick(item.id)}
+              horizontal={false}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
 };
-
