@@ -24,7 +24,7 @@ export const useProjectsHook = () => {
           teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
           impact: `${isSpanish ? 'Digitalización completa de procesos de SST, mejorando trazabilidad y cumplimiento legal.' : 'Full digitization of OHS processes, improving traceability and legal compliance.'}`,
           color: "from-teal-500 via-cyan-300 to-teal-100",
-          url : '',
+          url : 'https://github.com/CardonaAndres/NewStetic-SST-CLIENT',
           images_urls : [
               '/assets/imgs/projects/main/SstNS/img1.webp'
           ],
@@ -48,7 +48,7 @@ export const useProjectsHook = () => {
           teamSize: `2 ${isSpanish ? 'personas' : 'people'}`,
           impact: `${isSpanish ? 'Automatización del seguimiento de órdenes de compra, mejora en la comunicación con proveedores y optimización del control logístico.' : 'Automation of purchase order tracking, improved supplier communication, and optimized logistics control.'}`,
           color: "from-teal-500 via-red-400 to-red-200",
-          url: '',
+          url: 'https://github.com/CardonaAndres/BuyOrder-NewStetic',
           images_urls: [
             '/assets/imgs/projects/main/BuyOrderNS/img1.webp'
           ],
