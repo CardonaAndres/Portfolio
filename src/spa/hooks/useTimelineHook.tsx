@@ -19,7 +19,7 @@ export const useTimelineHook = () => {
       id: 1,
       type: 'education',
       title: `${isSpanish ? 'Análisista y Desarrollador de Software' : 'Software Analysis and Development Technologist'}`,
-      company: '',
+      company: 'SENA',
       location: 'Itagüí, Colombia',
       date: '2021 - 2024',
       current: false,

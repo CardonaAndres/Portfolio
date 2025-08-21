@@ -7,55 +7,105 @@ export const useProjectsHook = () => {
 
     const projects : Project[] = [
         {
-            id: 1,
-            title: `${isSpanish ? 'Belleza Perfecta' : 'Perfect Beauty'}`,
-            subtitle: `${isSpanish ? 'Plataforma de gestión administrativa y comercial para optimizar procesos internos.' : 'Administrative and commercial management platform to optimize internal processes.'}`,
-            description: `${isSpanish ? 'Belleza Perfecta es un sistema administrativo integral diseñado para optimizar la gestión operativa, comercial y financiera de la empresa, brindando un control eficiente y centralizado de sus procesos.' : 'Perfect Beauty is a comprehensive administrative system designed to optimize the operational, commercial, and financial management of the company of the same name, providing efficient and centralized control of its processes.'}`,
-            longDescription: `${isSpanish ? 'Belleza Perfecta permite gestionar clientes, productos, usuarios y facturación interna, mejorando el control administrativo y comercial. Ofrece facturación automatizada, control de inventario, descarga de facturas en PDF, gestión de usuarios con roles, reportes filtrables y exportables, historial de actividades y una estructura adaptable para facilitar su crecimiento y despliegue.' : 'Perfect Beauty allows managing clients, products, users, and internal invoicing, improving administrative and commercial control. It offers automated invoicing, inventory control, PDF invoice downloads, user management with roles, filterable and exportable reports, activity history, and an adaptable structure to facilitate its growth and deployment.'}`,
-            technologies: ["TypeScript", "React + TS", "Tailwind CSS", "Node.js", "NestJS", "MySQL", "Docker"],
-            features : [
-              `${isSpanish ? 'Gestión de Clientes' : 'Client Management'}`, 
-              `${isSpanish ? 'Control de Inventario' : 'Inventory Control'}`, 
-              `${isSpanish ? 'Reportes Personalizados' : 'Custom Reports'}`, 
-              `${isSpanish ? 'Facturación Automatizada' : 'Automated Invoicing'}`
-            ],
-            role: `${isSpanish ? 'Desarrollador Full Stack' : 'Full Stack Developer'}`,
-            duration: `2 ${isSpanish ? 'meses' : 'months'}`,
-            teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
-            impact: `${isSpanish ? 'Reducción del 65% en tiempos de gestión' : '65% reduction in management time'}`,
-            color: "from-yellow-500 via-yellow-300 to-yellow-100",
-            url : 'https://belleza-perfecta.vercel.app/',
-            images_urls : [
-                '/assets/imgs/projects/main/bellezaperfecta/BellezaPerfecta.webp'
-            ],
-            private: true
+          id: 1,
+          title: `${isSpanish ? 'New Stetic SST' : 'New Stetic SG-SST'}`,
+          subtitle: `${isSpanish ? 'Sistema integral de Seguridad y Salud en el Trabajo basado en microservicios.' : 'Comprehensive Occupational Health and Safety system based on microservices.'}`,
+          description: `${isSpanish ? 'Plataforma modular para la gestión de personal, exámenes médicos, inspecciones, accidentalidad y equipos de protección personal.' : 'Modular platform for managing personnel, medical exams, inspections, accidents, and personal protective equipment.'}`,
+          longDescription: `${isSpanish ? 'El proyecto SST está diseñado bajo una arquitectura de microservicios que integra módulos clave para la gestión de seguridad y salud en el trabajo. Incluye ingreso y seguimiento médico de personal, vigilancia epidemiológica, control de EPP y ergonomía, inspecciones de seguridad y gestión de accidentalidad e higiene ocupacional. Con autenticación centralizada por JWT, comunicación RESTful y cumplimiento de normativas legales, proporciona una solución robusta, escalable y adaptable a las necesidades empresariales.' : 'The SST project is designed with a microservices architecture integrating key modules for occupational health and safety management. It includes personnel onboarding and medical monitoring, epidemiological surveillance, PPE and ergonomics control, safety inspections, and accident and occupational hygiene management. With centralized JWT authentication, RESTful communication, and compliance with legal requirements, it provides a robust, scalable, and adaptable solution for business needs.'}`,
+          technologies: ["JavaScript", "TypeScript", "Node.js", "Express.js", "NestJS", "React", "Vite", "Tailwind CSS", "SQL Server", "Docker", "Docker Compose"],
+          features : [
+            `${isSpanish ? 'Gestión de Personal y Seguimiento Médico' : 'Personnel Management & Medical Monitoring'}`, 
+            `${isSpanish ? 'Vigilancia Epidemiológica y Salud Ocupacional' : 'Epidemiological Surveillance & Occupational Health'}`, 
+            `${isSpanish ? 'Control de EPP, Ergonomía e Inspecciones' : 'PPE, Ergonomics & Inspections Control'}`, 
+            `${isSpanish ? 'Gestión de Accidentalidad y Seguridad Laboral' : 'Accident Management & Workplace Safety'}`
+          ],
+          role: `${isSpanish ? 'Desarrollador Full Stack' : 'Full Stack Developer'}`,
+          duration: `4 ${isSpanish ? 'meses' : 'months'}`,
+          teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
+          impact: `${isSpanish ? 'Digitalización completa de procesos de SST, mejorando trazabilidad y cumplimiento legal.' : 'Full digitization of OHS processes, improving traceability and legal compliance.'}`,
+          color: "from-teal-500 via-cyan-300 to-teal-100",
+          url : '',
+          images_urls : [
+              '/assets/imgs/projects/main/SstNS/img1.webp'
+          ],
+          private: true
         },
+        /*
         {
-            id: 2,
-            title: `Factus`,
-            subtitle: `${isSpanish ? 'Facturación electrónica conforme a la DIAN, con gestión integral de productos y clientes.' : 'Electronic invoicing compliant with DIAN, with comprehensive management of products and clients.'}`,
-            description: `${isSpanish ? 'Sistema de facturación electrónica diseñado para Colombia. Permite generar facturas de ventas con el formato obligatorio de la DIAN (Dirección de Impuestos y Aduanas Nacionales), así como gestionar productos y contactos.' : 'Electronic invoicing system designed for Colombia. It allows generating sales invoices with the mandatory format of the DIAN (National Tax and Customs Directorate), as well as managing products and contacts.'}`,
-            longDescription: `${isSpanish ? 'Sistema de facturación electrónica diseñado para Colombia. Permite generar facturas de venta con el formato obligatorio de la DIAN (Dirección de Impuestos y Aduanas Nacionales), así como gestionar productos y contactos. Además, incluye funcionalidades como control de inventario, emisión de notas crédito y débito, descarga de documentos en PDF y XML, reportes financieros detallados, gestión de clientes y proveedores, múltiples roles de usuario, historial de actividades y una estructura escalable para facilitar su crecimiento y despliegue.' : 'Electronic invoicing system designed for Colombia. It allows the generation of sales invoices in the mandatory format required by the DIAN (Dirección de Impuestos y Aduanas Nacionales), as well as the management of products and contacts. Additionally, it includes features such as inventory control, issuance of credit and debit notes, PDF and XML document downloads, detailed financial reports, management of clients and suppliers, multiple user roles, activity history, and a scalable structure to support growth and deployment.'}`,
-            technologies: ["JavaScript", "React + JSX", "Tailwind CSS", "Node.js", "Express.js", "MySQL", "Docker"],
-            features : [
-              `${isSpanish ? 'Generación de Facturas DIAN (PDF/XML)' : 'DIAN-Compliant Invoice Generation (PDF/XML)'}`,
-              `${isSpanish ? 'Gestión de Clientes y Proveedores' : 'Client and Supplier Management'}`,
-              `${isSpanish ? 'Estructura Escalable y Desplegable' : 'Scalable and Deployable Structure'}`,
-              `${isSpanish ? 'Emisión de Notas Crédito y Débito' : 'Credit and Debit Notes Issuance'}`,
-            ],
-            role: `${isSpanish ? 'Desarrollador Backend' : 'Backend Developer'}`,
-            duration: `8 ${isSpanish ? 'meses' : 'months'}`,
-            teamSize: `6 ${isSpanish ? 'persona' : 'person'}`,
-            impact: `${isSpanish ? 'Automatizó el proceso de facturación y mejoró el cumplimiento con la DIAN.' : 'Automated invoicing and improved DIAN compliance.'}`,
-            color: "from-blue-500 via-blue-300 to-blue-100",
-            url : 'https://www.factus.com.co/',
-            images_urls : [
-                '/assets/imgs/projects/main/factus/FactusIMG.webp'
-            ],
-            private: true
+          id: 2,
+          title: `${isSpanish ? 'BuyOrder NS' : 'BuyOrder NS'}`,
+          subtitle: `${isSpanish ? 'Plataforma de gestión administrativa y comercial para optimizar procesos internos.' : 'Administrative and commercial management platform to optimize internal processes.'}`,
+          description: `${isSpanish ? 'Belleza Perfecta es un sistema administrativo integral diseñado para optimizar la gestión operativa, comercial y financiera de la empresa, brindando un control eficiente y centralizado de sus procesos.' : 'Perfect Beauty is a comprehensive administrative system designed to optimize the operational, commercial, and financial management of the company of the same name, providing efficient and centralized control of its processes.'}`,
+          longDescription: `${isSpanish ? 'Belleza Perfecta permite gestionar clientes, productos, usuarios y facturación interna, mejorando el control administrativo y comercial. Ofrece facturación automatizada, control de inventario, descarga de facturas en PDF, gestión de usuarios con roles, reportes filtrables y exportables, historial de actividades y una estructura adaptable para facilitar su crecimiento y despliegue.' : 'Perfect Beauty allows managing clients, products, users, and internal invoicing, improving administrative and commercial control. It offers automated invoicing, inventory control, PDF invoice downloads, user management with roles, filterable and exportable reports, activity history, and an adaptable structure to facilitate its growth and deployment.'}`,
+          technologies: ["JavaScript", "TypeScript", "Node.js", "Express.js", "NestJS", "React", "Vite", "Tailwind CSS", "SQL Server", "Docker", "Docker Compose"],
+          features : [
+            `${isSpanish ? 'Gestión de Clientes' : 'Client Management'}`, 
+            `${isSpanish ? 'Control de Inventario' : 'Inventory Control'}`, 
+            `${isSpanish ? 'Reportes Personalizados' : 'Custom Reports'}`, 
+            `${isSpanish ? 'Facturación Automatizada' : 'Automated Invoicing'}`
+          ],
+          role: `${isSpanish ? 'Desarrollador Full Stack' : 'Full Stack Developer'}`,
+          duration: `2 ${isSpanish ? 'meses' : 'months'}`,
+          teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
+          impact: `${isSpanish ? 'Reducción del 65% en tiempos de gestión' : '65% reduction in management time'}`,
+          color: "from-teal-500 via-red-400 to-red-200",
+          url : 'https://belleza-perfecta.vercel.app/',
+          images_urls : [
+              '/assets/imgs/projects/main/BuyOrderNS/img1.webp'
+          ],
+          private: true
         },
+        */
         {
           id: 3,
+          title: `Factus`,
+          subtitle: `${isSpanish ? 'Facturación electrónica conforme a la DIAN, con gestión integral de productos y clientes.' : 'Electronic invoicing compliant with DIAN, with comprehensive management of products and clients.'}`,
+          description: `${isSpanish ? 'Sistema de facturación electrónica diseñado para Colombia. Permite generar facturas de ventas con el formato obligatorio de la DIAN (Dirección de Impuestos y Aduanas Nacionales), así como gestionar productos y contactos.' : 'Electronic invoicing system designed for Colombia. It allows generating sales invoices with the mandatory format of the DIAN (National Tax and Customs Directorate), as well as managing products and contacts.'}`,
+          longDescription: `${isSpanish ? 'Sistema de facturación electrónica diseñado para Colombia. Permite generar facturas de venta con el formato obligatorio de la DIAN (Dirección de Impuestos y Aduanas Nacionales), así como gestionar productos y contactos. Además, incluye funcionalidades como control de inventario, emisión de notas crédito y débito, descarga de documentos en PDF y XML, reportes financieros detallados, gestión de clientes y proveedores, múltiples roles de usuario, historial de actividades y una estructura escalable para facilitar su crecimiento y despliegue.' : 'Electronic invoicing system designed for Colombia. It allows the generation of sales invoices in the mandatory format required by the DIAN (Dirección de Impuestos y Aduanas Nacionales), as well as the management of products and contacts. Additionally, it includes features such as inventory control, issuance of credit and debit notes, PDF and XML document downloads, detailed financial reports, management of clients and suppliers, multiple user roles, activity history, and a scalable structure to support growth and deployment.'}`,
+          technologies: ["JavaScript", "React + JSX", "Tailwind CSS", "Node.js", "Express.js", "MySQL", "Docker"],
+          features : [
+            `${isSpanish ? 'Generación de Facturas DIAN (PDF/XML)' : 'DIAN-Compliant Invoice Generation (PDF/XML)'}`,
+            `${isSpanish ? 'Gestión de Clientes y Proveedores' : 'Client and Supplier Management'}`,
+            `${isSpanish ? 'Estructura Escalable y Desplegable' : 'Scalable and Deployable Structure'}`,
+            `${isSpanish ? 'Emisión de Notas Crédito y Débito' : 'Credit and Debit Notes Issuance'}`,
+          ],
+          role: `${isSpanish ? 'Desarrollador Backend' : 'Backend Developer'}`,
+          duration: `8 ${isSpanish ? 'meses' : 'months'}`,
+          teamSize: `6 ${isSpanish ? 'persona' : 'person'}`,
+          impact: `${isSpanish ? 'Automatizó el proceso de facturación y mejoró el cumplimiento con la DIAN.' : 'Automated invoicing and improved DIAN compliance.'}`,
+          color: "from-blue-500 via-blue-300 to-blue-100",
+          url : 'https://www.factus.com.co/',
+          images_urls : [
+              '/assets/imgs/projects/main/factus/FactusIMG.webp'
+          ],
+          private: true
+        },
+        {
+          id: 4,
+          title: `${isSpanish ? 'Belleza Perfecta' : 'Perfect Beauty'}`,
+          subtitle: `${isSpanish ? 'Plataforma de gestión administrativa y comercial para optimizar procesos internos.' : 'Administrative and commercial management platform to optimize internal processes.'}`,
+          description: `${isSpanish ? 'Belleza Perfecta es un sistema administrativo integral diseñado para optimizar la gestión operativa, comercial y financiera de la empresa, brindando un control eficiente y centralizado de sus procesos.' : 'Perfect Beauty is a comprehensive administrative system designed to optimize the operational, commercial, and financial management of the company of the same name, providing efficient and centralized control of its processes.'}`,
+          longDescription: `${isSpanish ? 'Belleza Perfecta permite gestionar clientes, productos, usuarios y facturación interna, mejorando el control administrativo y comercial. Ofrece facturación automatizada, control de inventario, descarga de facturas en PDF, gestión de usuarios con roles, reportes filtrables y exportables, historial de actividades y una estructura adaptable para facilitar su crecimiento y despliegue.' : 'Perfect Beauty allows managing clients, products, users, and internal invoicing, improving administrative and commercial control. It offers automated invoicing, inventory control, PDF invoice downloads, user management with roles, filterable and exportable reports, activity history, and an adaptable structure to facilitate its growth and deployment.'}`,
+          technologies: ["TypeScript", "React + TS", "Tailwind CSS", "Node.js", "NestJS", "MySQL", "Docker"],
+          features : [
+            `${isSpanish ? 'Gestión de Clientes' : 'Client Management'}`, 
+            `${isSpanish ? 'Control de Inventario' : 'Inventory Control'}`, 
+            `${isSpanish ? 'Reportes Personalizados' : 'Custom Reports'}`, 
+            `${isSpanish ? 'Facturación Automatizada' : 'Automated Invoicing'}`
+          ],
+          role: `${isSpanish ? 'Desarrollador Full Stack' : 'Full Stack Developer'}`,
+          duration: `2 ${isSpanish ? 'meses' : 'months'}`,
+          teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
+          impact: `${isSpanish ? 'Reducción del 65% en tiempos de gestión' : '65% reduction in management time'}`,
+          color: "from-yellow-500 via-yellow-300 to-yellow-100",
+          url : 'https://belleza-perfecta.vercel.app/',
+          images_urls : [
+              '/assets/imgs/projects/main/bellezaperfecta/BellezaPerfecta.webp'
+          ],
+          private: true
+        },
+        {
+          id: 5,
           title: `Reservify`,
           subtitle: `${isSpanish ? 'Sistema de reservas en línea con control administrativo y experiencia optimizada para el cliente.' : 'Online reservation system with admin control and an optimized customer experience.'}`,
           description: `${isSpanish ? 'Sistema de reservas para restaurantes que permite a los clientes reservar mesas de forma fácil y rápida, y a los administradores gestionar horarios, usuarios y solicitudes desde una interfaz intuitiva.' : 'A restaurant reservation system that allows customers to easily book tables online and enables administrators to manage schedules, users, and requests through an intuitive interface.'}`,
@@ -79,7 +129,7 @@ export const useProjectsHook = () => {
           private: false
         },
         {
-          id: 4,
+          id: 6,
           title: `UrbanWheels`,
           subtitle: `${isSpanish ? 'Gestión integral de flota, reservas y clientes en un solo sistema eficiente.' : 'Comprehensive management of fleet, bookings, and clients in one efficient system.'}`,
           description: `${isSpanish ? 'Sistema avanzado para la gestión de flotas de vehículos, reservas y clientes, que mejora la eficiencia operativa y la experiencia del usuario.' : 'Advanced system for managing vehicle fleets, bookings, and clients, enhancing operational efficiency and user experience.'}`,

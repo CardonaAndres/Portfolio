@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useHeroHook } from "../hooks/useHeroHook";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/core/context/LanguageContext";
@@ -119,128 +119,153 @@ export const Card3D = ({ setIsHovered, isHovered, isMobile, mousePosition } : Pr
         {/* Glowing Background - Reducido en móvil */}
         {!isMobile && (<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl" />)}
         
-        {/* Card Container */}
+        {/* Card Container - ALTURA FIJA */}
         <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-black/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-white/10 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl" />
             
-            {/* Card Content - Transición más suave */}
-            <motion.div
-                key={showCode ? 'code' : 'photo'}
-                initial={{ opacity: 0, scale: isMobile ? 0.98 : 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: isMobile ? 0.98 : 0.8 }}
-                transition={{ 
-                  duration: isMobile ? 0.3 : 0.5,
-                  ease: "easeOut"
-                }}
-                className="relative"
-            >
-                {showCode ? (
-                    // Code Preview
-                    <div>
-                        <div className="flex items-center space-x-2 mb-5">
-                            <div className="w-3 h-3 rounded-full bg-red-500" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                            <div className="w-3 h-3 rounded-full bg-green-500" />
-                        </div>
-                        
-                        <div className="font-mono text-xs sm:text-sm space-y-2">
-                            <div className="text-gray-500">// Skills & Technologies</div>
-                            <div>
-                            <span className="text-blue-400">const</span>
-                            <span className="text-white ml-2">developer</span>
-                            <span className="text-gray-400 ml-2">=</span>
-                            <span className="text-gray-400 ml-2">{'{'}</span>
-                            </div>
-                            <div className="ml-4">
-                            <span className="text-green-400">name:</span>
-                            <span className="text-orange-400 ml-2">'Andrés Cardona'</span>,
-                            </div>
-                            <div className="ml-4">
-                            <span className="text-green-400">role:</span>
-                            <span className="text-orange-400 ml-2">'Full Stack Developer'</span>,
-                            </div>
-                            <div className="ml-4">
-                            <span className="text-green-400">experience:</span>
-                            <span className="text-purple-400 ml-2">'1.6+ years'</span>,
-                            </div>
-                            <div className="ml-4">
-                            <span className="text-green-400">expertise:</span>
-                            <span className="text-gray-400 ml-2">[</span>
-                            </div>
-                            <div className="ml-8 space-y-1">
-                            {['JavaScript', 'TypeScript', 'Node.js', 'Express.js', 'NestJS'].map((skill, i) => (
-                                <motion.div
-                                key={skill}
-                                initial={{ opacity: 0, x: isMobile ? -10 : -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ 
-                                  delay: isMobile ? 0.8 + i * 0.05 : 1 + i * 0.1,
-                                  duration: 0.3,
-                                  ease: "easeOut" 
-                                }}
-                                >
-                                <span className="text-orange-400">'{skill}'</span>,
-                                </motion.div>
-                            ))}
-                            </div>
-                            <div className="ml-4 text-gray-400">],</div>
-                            <div className="text-gray-400">{'}'}</div>
-                            
-                        </div>
-                    </div>
-                ) : (
-                    // Photo Section
-                    <div className="flex flex-col items-center space-y-4">
-                        <div className="relative">
-                            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1">
-                                <img
-                                    src="/assets/imgs/me/FotoHV.webp"
-                                    alt="Andrés Cardona"
-                                    className="w-full h-full rounded-full object-cover"
-                                />
-                            </div>
-                            {!isMobile && (
-                              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-md -z-10" />
-                            )}
-                        </div>
-                        
-                        <div className="text-center">
-                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
-                                Andrés Cardona
-                            </h3>
-                            <div className="mt-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
-                                <span className="text-blue-400 text-xs sm:text-sm">
-                                    { isSpanish ? 'Desarrollador De Software' : 'Full Stack Developer' }
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </motion.div>
-
-            {/* Animated Skills - Optimizado para móvil */}
-            {showCode && (
-                <div className="mt-6 flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
-                    <motion.span 
-                    key={skill} 
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }} 
-                    transition={{ 
-                      delay: isMobile ? 1.1 + index * 0.03 : 1.5 + index * 0.05,
-                      duration: 0.3,
-                      ease: "easeOut"
-                    }}
-                    whileHover={!isMobile ? { scale: 1.1 } : {}} // Solo hover en desktop
-                    whileTap={isMobile ? { scale: 0.95 } : {}} // Tap feedback en móvil
-                    className="px-2 sm:px-3 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30"
+            {/* CONTENEDOR CON ALTURA FIJA PARA EL CONTENIDO */}
+            <div className="relative w-full h-[400px] sm:h-[450px]">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={showCode ? 'code' : 'photo'}
+                        initial={{ opacity: 0, scale: isMobile ? 0.98 : 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: isMobile ? 0.98 : 0.8 }}
+                        transition={{ 
+                          duration: isMobile ? 0.3 : 0.5,
+                          ease: "easeOut"
+                        }}
+                        className="absolute inset-0 flex flex-col"
                     >
-                    {skill}
-                    </motion.span>
-                ))}
-                </div>
-            )}
+                        {showCode ? (
+                            // Code Preview
+                            <div className="flex-1 flex flex-col">
+                                <div className="flex items-center space-x-2 mb-5">
+                                    <div className="w-3 h-3 rounded-full bg-red-500" />
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                                </div>
+                                
+                                <div className="font-mono text-xs sm:text-sm space-y-2 flex-1">
+                                    <div className="text-gray-500">// Skills & Technologies</div>
+                                    <div>
+                                    <span className="text-blue-400">const</span>
+                                    <span className="text-white ml-2">developer</span>
+                                    <span className="text-gray-400 ml-2">=</span>
+                                    <span className="text-gray-400 ml-2">{'{'}</span>
+                                    </div>
+                                    <div className="ml-4">
+                                    <span className="text-green-400">name:</span>
+                                    <span className="text-orange-400 ml-2">'Andrés Cardona'</span>,
+                                    </div>
+                                    <div className="ml-4">
+                                    <span className="text-green-400">role:</span>
+                                    <span className="text-orange-400 ml-2">'Full Stack Developer'</span>,
+                                    </div>
+                                    <div className="ml-4">
+                                    <span className="text-green-400">experience:</span>
+                                    <span className="text-purple-400 ml-2">'1.6+ years'</span>,
+                                    </div>
+                                    <div className="ml-4">
+                                    <span className="text-green-400">expertise:</span>
+                                    <span className="text-gray-400 ml-2">[</span>
+                                    </div>
+                                    <div className="ml-8 space-y-1">
+                                    {['JavaScript', 'TypeScript', 'Node.js', 'Express.js', 'NestJS'].map((skill, i) => (
+                                        <motion.div
+                                        key={skill}
+                                        initial={{ opacity: 0, x: isMobile ? -10 : -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ 
+                                          delay: isMobile ? 0.8 + i * 0.05 : 1 + i * 0.1,
+                                          duration: 0.3,
+                                          ease: "easeOut" 
+                                        }}
+                                        >
+                                        <span className="text-orange-400">'{skill}'</span>,
+                                        </motion.div>
+                                    ))}
+                                    </div>
+                                    <div className="ml-4 text-gray-400">],</div>
+                                    <div className="text-gray-400">{'}'}</div>
+                                </div>
+
+                                {/* Animated Skills - Posicionados en la parte inferior */}
+                                <div className="mt-6 flex flex-wrap gap-2">
+                                    {skills.map((skill, index) => (
+                                        <motion.span 
+                                        key={skill} 
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }} 
+                                        transition={{ 
+                                          delay: isMobile ? 1.1 + index * 0.03 : 1.5 + index * 0.05,
+                                          duration: 0.3,
+                                          ease: "easeOut"
+                                        }}
+                                        whileHover={!isMobile ? { scale: 1.1 } : {}} // Solo hover en desktop
+                                        whileTap={isMobile ? { scale: 0.95 } : {}} // Tap feedback en móvil
+                                        className="px-2 sm:px-3 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                                        >
+                                        {skill}
+                                        </motion.span>
+                                    ))}
+                                </div>
+                            </div>
+                        ) : (
+                            // Photo Section - Más contenido y mejor distribución
+                            <div className="flex-1 flex flex-col justify-between py-4">
+                                {/* Header decorativo */}
+                                <div className="flex items-center justify-center space-x-2 mb-6">
+                                    <div className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent flex-1"></div>
+                                    <div className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
+                                        <span className="text-blue-400 text-xs font-medium">DEVELOPER</span>
+                                    </div>
+                                    <div className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent flex-1"></div>
+                                </div>
+
+                                {/* Foto y info principal */}
+                                <div className="flex flex-col items-center space-y-6 flex-1 justify-center">
+                                    <div className="relative">
+                                        <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1">
+                                            <img
+                                                src="/assets/imgs/me/FotoHV.webp"
+                                                alt="Andrés Cardona"
+                                                className="w-full h-full rounded-full object-cover"
+                                            />
+                                        </div>
+                                        {!isMobile && (
+                                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-md -z-10" />
+                                        )}
+                                        {/* Badge de status */}
+                                        <div className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full border-2 border-gray-900 flex items-center justify-center">
+                                            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full animate-pulse"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="text-center space-y-3">
+                                        <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                                            Andrés Cardona
+                                        </h3>
+                                        <div className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
+                                            <span className="text-blue-400 text-sm sm:text-base font-medium">
+                                                { isSpanish ? 'Desarrollador De Software' : 'Full Stack Developer' }
+                                            </span>
+                                        </div>
+                                        
+                                        {/* Info adicional */}
+                                        <div className="flex items-center justify-center space-x-4 text-gray-400 text-xs sm:text-sm mt-4">
+                                            <div className="flex items-center space-x-1">
+                                                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                                <span>1.6+ {isSpanish ? 'años exp.' : 'years exp.'}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </motion.div>
+                </AnimatePresence>
+            </div>
         </div>
 
         {/* Mobile Floating Tags - Animación más simple */}
