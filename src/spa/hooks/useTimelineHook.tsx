@@ -77,7 +77,7 @@ export const useTimelineHook = () => {
       location: 'Medellín, Colombia',
       date: '2024 - 2025',
       current: false,
-      description: `${isSpanish ? 'Desarrollo de aplicaciones web escalables y de alto rendimiento con arquitectura de microservicios' : 'Development of scalable and high-performance web applications with microservices architecture'}`,
+      description: `${isSpanish ? 'Desarrollo freelance de aplicaciones web escalables y de alto rendimiento utilizando distintas arquitecturas según las necesidades del proyecto' : 'Freelance development of scalable and high-performance web applications using different architectures according to project requirements.'}`,
       achievements: [
         `${isSpanish ? 'Desarrollé Belleza Perfecta - Sistema administrativo para optimizar la gestión operativa, comercial y financiera de la empresa, brindando un control eficiente y centralizado de sus procesos.' : 'Developed Belleza Perfecta - Administrative system to optimize the operational, commercial, and financial management of the company, providing efficient and centralized control of its processes.'}`,
         `${isSpanish ? 'Creé Reservify - Sistema de reservas para restaurantes con interfaces intuitivas y gestión en tiempo real' : 'Created Reservify - Restaurant reservation system with intuitive interfaces and real-time management'}`,
