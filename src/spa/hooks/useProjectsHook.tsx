@@ -24,36 +24,13 @@ export const useProjectsHook = () => {
           teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
           impact: `${isSpanish ? 'Digitalización completa de procesos de SST, mejorando trazabilidad y cumplimiento legal.' : 'Full digitization of OHS processes, improving traceability and legal compliance.'}`,
           color: "from-teal-500 via-cyan-300 to-teal-100",
-          url : 'https://github.com/CardonaAndres/NewStetic-SST-CLIENT',
+          url : '',
+          github_url: 'https://github.com/CardonaAndres/NewStetic-SST-CLIENT',
           images_urls : [
               '/assets/imgs/projects/main/SstNS/img1.webp'
           ],
           private: true
         },    
-        {
-          id: 2,
-          title: `BuyOrder NS`,
-          subtitle: `${isSpanish ? 'Sistema de gestión de órdenes de compra nacionales con arquitectura de microservicios' : 'National purchase order management system with microservices architecture'}`,
-          description: `${isSpanish ? 'Plataforma web para la gestión y seguimiento de órdenes de compra nacionales (OCN), mejorando la comunicación con proveedores, el control logístico del almacén y la calificación del cumplimiento de los proveedores.' : 'Web platform for managing and tracking national purchase orders (NPO), improving supplier communication, warehouse logistics control, and supplier compliance rating.'}`,
-          longDescription: `${isSpanish ? 'BuyOrder NS es una plataforma enfocada en la gestión integral de órdenes de compra nacionales. El sistema incluye tres módulos principales: Seguimiento OCN que permite envío de recordatorios automáticos a proveedores dos veces por semana, un formulario donde los proveedores pueden comentar sobre ítems específicos y la generación automática de cartas de atraso para órdenes no cumplidas. El módulo de Almacén facilita al personal registrar la recepción física de productos con un simple botón por ítem. El módulo de Calificación evalúa el desempeño de proveedores calculando porcentajes de cumplimiento basados en fechas de entrega y motivos de retraso. Todo el sistema está protegido con autenticación centralizada y roles diferenciados.' : 'BuyOrder NS is a platform focused on comprehensive management of national purchase orders. The system includes three main modules: NPO Tracking that enables automatic reminder sending to suppliers twice a week, a form where suppliers can comment on specific items, and automatic generation of delay letters for unfulfilled orders. The Warehouse module allows staff to easily register physical product reception with a simple button per item. The Rating module evaluates supplier performance by calculating compliance percentages based on delivery dates and delay reasons. The entire system is protected with centralized authentication and differentiated roles.'}`,
-          technologies: ["JavaScript", "React", "Tailwind CSS", "Node.js", "Express.js", "SQL Server", "Microservices", "Docker"],
-          features: [
-            `${isSpanish ? 'Seguimiento OCN con recordatorios automáticos' : 'NPO Tracking with automatic reminders'}`, 
-            `${isSpanish ? 'Gestión de recepción en almacén' : 'Warehouse reception management'}`, 
-            `${isSpanish ? 'Sistema de calificación de proveedores' : 'Supplier rating system'}`, 
-            `${isSpanish ? 'Gestión automática de cartas de atraso' : 'Automatic delay letter generation'}`
-          ],
-          role: `${isSpanish ? 'Desarrollador Full Stack Líder' : 'Lead Full Stack Developer'}`,
-          duration: `${isSpanish ? '2 meses' : '2 months'}`,
-          teamSize: `2 ${isSpanish ? 'personas' : 'people'}`,
-          impact: `${isSpanish ? 'Automatización del seguimiento de órdenes de compra, mejora en la comunicación con proveedores y optimización del control logístico.' : 'Automation of purchase order tracking, improved supplier communication, and optimized logistics control.'}`,
-          color: "from-teal-500 via-red-400 to-red-200",
-          url: 'https://github.com/CardonaAndres/BuyOrder-NewStetic',
-          images_urls: [
-            '/assets/imgs/projects/main/BuyOrderNS/img1.webp'
-          ],
-          private: true
-        },
         {
           id: 3,
           title: `Factus`,
@@ -75,6 +52,31 @@ export const useProjectsHook = () => {
           url : 'https://www.factus.com.co/',
           images_urls : [
               '/assets/imgs/projects/main/factus/FactusIMG.webp'
+          ],
+          private: true
+        },
+        {
+          id: 2,
+          title: `BuyOrder NS`,
+          subtitle: `${isSpanish ? 'Sistema de gestión de órdenes de compra nacionales con arquitectura de microservicios' : 'National purchase order management system with microservices architecture'}`,
+          description: `${isSpanish ? 'Plataforma web para la gestión y seguimiento de órdenes de compra nacionales (OCN), mejorando la comunicación con proveedores, el control logístico del almacén y la calificación del cumplimiento de los proveedores.' : 'Web platform for managing and tracking national purchase orders (NPO), improving supplier communication, warehouse logistics control, and supplier compliance rating.'}`,
+          longDescription: `${isSpanish ? 'BuyOrder NS es una plataforma enfocada en la gestión integral de órdenes de compra nacionales. El sistema incluye tres módulos principales: Seguimiento OCN que permite envío de recordatorios automáticos a proveedores dos veces por semana, un formulario donde los proveedores pueden comentar sobre ítems específicos y la generación automática de cartas de atraso para órdenes no cumplidas. El módulo de Almacén facilita al personal registrar la recepción física de productos con un simple botón por ítem. El módulo de Calificación evalúa el desempeño de proveedores calculando porcentajes de cumplimiento basados en fechas de entrega y motivos de retraso. Todo el sistema está protegido con autenticación centralizada y roles diferenciados.' : 'BuyOrder NS is a platform focused on comprehensive management of national purchase orders. The system includes three main modules: NPO Tracking that enables automatic reminder sending to suppliers twice a week, a form where suppliers can comment on specific items, and automatic generation of delay letters for unfulfilled orders. The Warehouse module allows staff to easily register physical product reception with a simple button per item. The Rating module evaluates supplier performance by calculating compliance percentages based on delivery dates and delay reasons. The entire system is protected with centralized authentication and differentiated roles.'}`,
+          technologies: ["JavaScript", "React", "Tailwind CSS", "Node.js", "Express.js", "SQL Server", "Microservices", "Docker"],
+          features: [
+            `${isSpanish ? 'Seguimiento OCN con recordatorios automáticos' : 'NPO Tracking with automatic reminders'}`, 
+            `${isSpanish ? 'Gestión de recepción en almacén' : 'Warehouse reception management'}`, 
+            `${isSpanish ? 'Sistema de calificación de proveedores' : 'Supplier rating system'}`, 
+            `${isSpanish ? 'Gestión automática de cartas de atraso' : 'Automatic delay letter generation'}`
+          ],
+          role: `${isSpanish ? 'Desarrollador Full Stack Líder' : 'Lead Full Stack Developer'}`,
+          duration: `${isSpanish ? '2 meses' : '2 months'}`,
+          teamSize: `2 ${isSpanish ? 'personas' : 'people'}`,
+          impact: `${isSpanish ? 'Automatización del seguimiento de órdenes de compra, mejora en la comunicación con proveedores y optimización del control logístico.' : 'Automation of purchase order tracking, improved supplier communication, and optimized logistics control.'}`,
+          color: "from-teal-500 via-red-400 to-red-200",
+          url: '',
+          github_url: 'https://github.com/CardonaAndres/BuyOrder-NewStetic',
+          images_urls: [
+            '/assets/imgs/projects/main/BuyOrderNS/img1.webp'
           ],
           private: true
         },
@@ -144,7 +146,8 @@ export const useProjectsHook = () => {
           teamSize: `3 ${isSpanish ? 'persona' : 'person'}`,
           impact: `${isSpanish ? 'Mejoró la eficiencia operativa y redujo los errores en reservas y gestión de flota.' : 'Improved operational efficiency and reduced errors in bookings and fleet management.'}`,
           color: "from-red-700 via-red-400 to-red-200",
-          url : 'https://github.com/CardonaAndres/UrbanWheelsClient',
+          url : '',
+          github_url : 'https://github.com/CardonaAndres/UrbanWheelsClient',
           images_urls : [
               '/assets/imgs/projects/main/urbanwheels/UrbanWheels.webp'
           ],

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FeatureItem } from "./FeatureItem";
 import { InfoModal } from "./InfoModal";
 import { TechBadge } from "./TechBadge";
-import { ExternalLink, Users, Calendar, Briefcase, Target, Code2, Sparkles, Info } from 'lucide-react';
+import { ExternalLink, Users, Calendar, Briefcase, Target, Code2, Sparkles, Info, Github } from 'lucide-react';
 
 interface Props {
   currentProject: Project;
@@ -28,7 +28,8 @@ export const ProjectCard = ({ currentProject, activeProject, setHoveredTech }: P
     exploreProject: isSpanish ? 'Explorar Proyecto' : 'View Project',
     projectImpact: isSpanish ? 'Impacto del Proyecto' : 'Project Impact',
     keyFeatures: isSpanish ? 'Características Principales' : 'Key Features',
-    tapForInfo: isSpanish ? 'Toca para más info' : 'Tap for more info'
+    tapForInfo: isSpanish ? 'Toca para más info' : 'Tap for more info',
+    viewCode: isSpanish ? 'Ver Código' : 'View Code'
   }), [isSpanish]);
 
   // Optimizar detección de mobile con debounce
@@ -219,6 +220,20 @@ export const ProjectCard = ({ currentProject, activeProject, setHoveredTech }: P
               >
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
                 <span>{texts.exploreProject}</span>
+              </motion.a>
+            )}
+            
+            {currentProject.github_url && (
+              <motion.a
+                href={currentProject.github_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative overflow-hidden flex items-center space-x-2 px-6 py-3 rounded-full bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-200 active:scale-95 border border-gray-700"
+              >
+                <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-200" />
+                <span>{texts.viewCode}</span>
               </motion.a>
             )}
           </motion.div>
