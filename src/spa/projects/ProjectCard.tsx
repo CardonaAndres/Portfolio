@@ -282,12 +282,11 @@ export const ProjectCard = ({ currentProject, activeProject, setHoveredTech }: P
                         onHoverEnd={handleImageHoverEnd}
                       >
                         {/* Main Image */}
-                        <div className="relative w-full bg-gray-900">
+                        <div className="relative w-full h-full bg-gray-900">
                           <img
                             src={currentProject.images_urls[0]}
                             alt={`${currentProject.title} screenshot`}
                             className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                            loading="lazy"
                             decoding="async"
                           />
                           
