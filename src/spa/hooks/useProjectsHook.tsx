@@ -32,7 +32,7 @@ export const useProjectsHook = () => {
           private: true
         },    
         {
-          id: 3,
+          id: 2,
           title: `Factus`,
           subtitle: `${isSpanish ? 'Facturación electrónica conforme a la DIAN, con gestión integral de productos y clientes.' : 'Electronic invoicing compliant with DIAN, with comprehensive management of products and clients.'}`,
           description: `${isSpanish ? 'Sistema de facturación electrónica diseñado para Colombia. Permite generar facturas de ventas con el formato obligatorio de la DIAN (Dirección de Impuestos y Aduanas Nacionales), así como gestionar productos y contactos.' : 'Electronic invoicing system designed for Colombia. It allows generating sales invoices with the mandatory format of the DIAN (National Tax and Customs Directorate), as well as managing products and contacts.'}`,
@@ -56,7 +56,7 @@ export const useProjectsHook = () => {
           private: true
         },
         {
-          id: 2,
+          id: 3,
           title: `BuyOrder NS`,
           subtitle: `${isSpanish ? 'Sistema de gestión de órdenes de compra nacionales con arquitectura de microservicios' : 'National purchase order management system with microservices architecture'}`,
           description: `${isSpanish ? 'Plataforma web para la gestión y seguimiento de órdenes de compra nacionales (OCN), mejorando la comunicación con proveedores, el control logístico del almacén y la calificación del cumplimiento de los proveedores.' : 'Web platform for managing and tracking national purchase orders (NPO), improving supplier communication, warehouse logistics control, and supplier compliance rating.'}`,
@@ -134,7 +134,7 @@ export const useProjectsHook = () => {
           subtitle: `${isSpanish ? 'Gestión integral de flota, reservas y clientes en un solo sistema eficiente.' : 'Comprehensive management of fleet, bookings, and clients in one efficient system.'}`,
           description: `${isSpanish ? 'Sistema avanzado para la gestión de flotas de vehículos, reservas y clientes, que mejora la eficiencia operativa y la experiencia del usuario.' : 'Advanced system for managing vehicle fleets, bookings, and clients, enhancing operational efficiency and user experience.'}`,
           longDescription: `${isSpanish ? 'UrbanWheels es un sistema avanzado para la gestión integral de la flota de vehículos, las reservas y los clientes. Centraliza y optimiza procesos operativos como el control de disponibilidad, la administración de clientes, la planificación de reservas y el seguimiento de vehículos. Proporciona una experiencia fluida para los usuarios y herramientas analíticas para facilitar decisiones estratégicas.' : 'UrbanWheels is an advanced system for the comprehensive management of vehicle fleets, bookings, and clients. It centralizes and optimizes operational processes such as availability tracking, client administration, booking scheduling, and vehicle monitoring. It delivers a seamless user experience and provides analytical tools to support strategic decision-making.'}`,
-          technologies: ["JavaScript", "React + JSX", "Tailwind CSS", "Python", "FastAPI", "MySQL", "Docker"],
+          technologies: ["JavaScript", "React + JSX", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
           features : [
             `${isSpanish ? 'Gestión de Flotas de Vehículos' : 'Fleet Management'}`,
             `${isSpanish ? 'Reservas de Vehículos en Línea' : 'Online Vehicle Booking'}`,
