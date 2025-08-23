@@ -311,7 +311,7 @@ export const Hero = memo(() => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4"
+                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4"
               >
                 <motion.span 
                   className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600"
@@ -345,7 +345,7 @@ export const Hero = memo(() => {
                 className="space-y-4"
               >
                 <motion.h2 
-                  className="text-2xl sm:text-3xl font-bold"
+                  className="text-xl sm:text-2xl font-bold"
                   animate={{
                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
                   }}

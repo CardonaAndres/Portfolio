@@ -1,9 +1,8 @@
-
 export const texts = {
   ES: {
-    description : 'Desarrollador con 1.6+ años de experiencia, creando aplicaciones web escalables y de alto rendimiento. Especializado en Node.js, TypeScript y arquitecturas de microservicios.'
+    description: 'Desarrollador Full Stack con 1.6+ años creando aplicaciones web escalables. Transformo ideas ambiciosas en soluciones digitales robustas con creatividad técnica y arquitectura sólida.'
   },
   EN: {
-    description : 'Developer with 1.6+ years of experience building scalable and high-performance web applications. Specialized in Node.js, TypeScript, and microservices architectures.'
+    description: 'Full Stack Developer with 1.6+ years building scalable web applications. I transform ambitious ideas into robust digital solutions through technical creativity and solid architecture.'
   }
 };
