@@ -274,9 +274,7 @@ export const ProjectCard = ({ currentProject, activeProject, setHoveredTech }: P
                     {/* Project Images Gallery */}
                     {currentProject.images_urls.length > 0 && (
                       <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.3 }}
                         className="relative group"
                         onHoverStart={handleImageHoverStart}
                         onHoverEnd={handleImageHoverEnd}
