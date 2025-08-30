@@ -104,7 +104,7 @@ export const Navbar = () => {
                   <div className="absolute inset-0 w-8 h-8 bg-blue-500 blur-xl opacity-50"></div>
                 </motion.div>
    
-                <h1 className="text-xl font-bold tracking-tight">
+                <h1 className="text-lg font-bold tracking-tight">
                     <span className="relative inline-block text-blue-500 drop-shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all duration-300 hover:drop-shadow-[0_0_40px_rgba(59,130,246,0.8)]">
                         Andrés
                     <span className="absolute -inset-1 -z-10 animate-pulse rounded-md bg-blue-500/20 blur-md"></span>
@@ -132,7 +132,7 @@ export const Navbar = () => {
                 >
                   <div className="flex items-center space-x-2 text-gray-300 group-hover:text-white transition-colors duration-300">
                     <item.icon className="w-4 h-4" />
-                    <span className="font-medium">
+                    <span className="font-medium lg:text-sm">
                       {language === 'ES' ? item.label : item.labelEn}
                     </span>
                   </div>

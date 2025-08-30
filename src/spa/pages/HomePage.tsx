@@ -10,7 +10,7 @@ export const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div className="pt-20 min-h-screen bg-black">
+      <div className="pt-12 min-h-screen bg-black">
         <div id="about">
           <Hero />
         </div>
