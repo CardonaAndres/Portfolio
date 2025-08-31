@@ -26,7 +26,7 @@ export type ProjectSecondary = {
   image: string;
   color: string;
   github: string;
-  demo: string;
+  demo?: string;
 }
 
 export interface TimelineItem {

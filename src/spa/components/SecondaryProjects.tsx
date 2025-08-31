@@ -117,18 +117,20 @@ export const SecondaryProjects = () => {
 
                     {/* Action Buttons - Fixed at bottom */}
                     <div className="flex items-center space-x-3 mt-auto">
-                      <motion.a href={project.demo} target="_blank"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => console.log(`Demo de ${project.title}`)}
-                        className={`flex-1 px-4 py-2 ${colorClasses.buttonPrimary} rounded-lg text-sm font-medium transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer`}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        <span>{isSpanish ? 'Explorar' : 'Explore'}</span>
-                      </motion.a>
+                      {project.demo && (
+                        <motion.a href={project.demo} target="_blank"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => console.log(`Demo de ${project.title}`)}
+                          className={`flex-1 px-4 py-2 ${colorClasses.buttonPrimary} rounded-lg text-sm font-medium transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer w-full`}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          <span>{isSpanish ? 'Explorar' : 'Explore'}</span>
+                        </motion.a>
+                      )}
                       
                       <motion.a href={project.github} target="_blank"  whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }} className={`px-4 py-2 bg-white/10 ${colorClasses.buttonSecondary} border border-white/20 rounded-lg text-white text-sm font-medium transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer`}
+                        whileTap={{ scale: 0.95 }} className={`px-4 py-2 bg-white/10 ${colorClasses.buttonSecondary} border border-white/20 rounded-lg text-white text-sm font-medium transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer ${project.demo ? '' : 'w-full'}`}
                       >
                         <Github className="w-4 h-4" />
                         <span>{isSpanish ? 'Código' : 'Code'}</span>

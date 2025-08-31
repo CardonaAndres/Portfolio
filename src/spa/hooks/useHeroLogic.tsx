@@ -151,10 +151,8 @@ export const useHeroLogic = (): UseHeroLogicReturn => {
   }, []);
 
   const checkMobile = useCallback(() => {
-    const newIsMobile = window.innerWidth < 768;
-    setIsMobile(prevIsMobile => 
-      prevIsMobile !== newIsMobile ? newIsMobile : prevIsMobile
-    );
+    const newIsMobile = window.innerWidth < 1200;
+    setIsMobile(prevIsMobile => prevIsMobile !== newIsMobile ? newIsMobile : prevIsMobile);
   }, []);
 
   const handleProjectsClick = useCallback(() => {

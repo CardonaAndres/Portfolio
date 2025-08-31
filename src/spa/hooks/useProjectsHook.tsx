@@ -158,6 +158,16 @@ export const useProjectsHook = () => {
     const secondaryProjects : ProjectSecondary[] = [
       {
         id: 1,
+        title: 'Auth NS (New Stetic S.A)',
+        description: `${isSpanish ? 'API de autenticación centralizada para New Stetic S.A., que valida usuarios vía Active Directory (LDAP) y BUK. Ofrece inicio de sesión seguro, sin almacenar credenciales localmente, y es extensible a múltiples métodos de autenticación.' : 'Centralized authentication API for New Stetic S.A., validating users via Active Directory (LDAP) and BUK. Provides secure login without local credential storage and is extensible to multiple authentication methods.'}`,
+        category: 'landing',
+        technologies: ['JavaScript', 'Node.js', 'Express.js', 'LDAP', 'Docker'],
+        image: '/assets/imgs/projects/secondary/authNs.webp',
+        color: 'teal-500',
+        github: 'https://github.com/CardonaAndres/MS-Auth-NewStetic',
+      },
+      {
+        id: 2,
         title: 'Nexo Migratorio LLC',
         description: `${isSpanish ? 'Asesoría completa y personalizada para tus procesos migratorios en los EE.UU., lo que resultó en un aumento del 45% en las asesorías después del lanzamiento de la página web.' : 'Complete and personalized advisory for your immigration processes in the USA, which led to a 45% increase in consultations after the website launch.'}`,
         category: 'landing',
@@ -168,7 +178,7 @@ export const useProjectsHook = () => {
         demo: 'https://www.nexomigratorio.com',
       },
       {
-        id: 2,
+        id: 3,
         title: `${isSpanish ? 'Grupo' : 'Group'} Coactiva S.A.S`,
         description: `${isSpanish ? 'Agencia líder en recuperación de cartera en Colombia y América Latina. La plataforma presenta sus servicios especializados en gestión de cartera vencida, destacando su cobertura regional, experiencia y enfoque tecnológico. El diseño se enfocó en la usabilidad, la confianza del usuario y la conversión de clientes potenciales.' : 'Leading debt recovery agency in Colombia and Latin America. The platform showcases their specialized services in delinquent portfolio management, highlighting their regional reach, experience, and technology-driven approach. The design focused on usability, user trust, and converting potential clients.'}`,
         category: 'landing',
@@ -179,7 +189,7 @@ export const useProjectsHook = () => {
         demo: 'https://www.grupocoactivasas.com/',
       },
       {
-        id: 3,
+        id: 4,
         title: `${isSpanish ? 'Cuidado y Armonia' : 'Care and Harmony'}`,
         description: `${isSpanish ? 'Landing page para un salón de belleza emergente, diseñada para aumentar su visibilidad en línea y potenciar sus ventas. Esta página ha sido clave para conectar con más clientes y ofrecerles una experiencia de reserva en línea eficiente y accesible.' : 'A landing page for an emerging beauty salon, designed to boost its online visibility and increase sales. This page has been instrumental in connecting with more clients and providing them with an efficient and accessible online booking experience.'}`,
         category: 'web',
@@ -190,7 +200,7 @@ export const useProjectsHook = () => {
         demo: 'https://centro-estetico-ruby.vercel.app/',
       },
       {
-        id: 4,
+        id: 5,
         title: `${isSpanish ? 'Cuidado y Armonia | Portafolio de servicios' : 'Care and Harmony | Services Portfolio'}`,
         description: `${isSpanish ? '¡Portafolio de Servicios de Cuidado Armonía! Este proyecto presenta de forma moderna y accesible los servicios ofrecidos por Cuidado Armonía, enfocados en el bienestar, el cuidado personal y la armonía interior.' : 'Cuidado Armonía Services Portfolio! This project presents the services offered by Cuidado Armonía in a modern and accessible way, focusing on well-being, personal care, and inner harmony.'}`,
         category: 'web',

@@ -1,5 +1,5 @@
 import { useLanguage } from "@/core/context/LanguageContext";
-import { Code2, Database, Rocket, Server, Terminal, Github, Linkedin } from "lucide-react";
+import { Code2, Database, Server, Terminal, Github, Linkedin } from "lucide-react";
 
 const skills = [
     'JavaScript', 'TypeScript', 'React', 'TailwindCSS', 'Node.js', 'Express.js', 'NestJS', 'SQL', 'Docker'
@@ -58,15 +58,7 @@ export const useHeroHook = () => {
             color: 'from-purple-500 to-pink-500',
             position: { top: '65%', right: '-70px' },
             mobilePosition: { top: '45%', right: '-40px' }
-        },
-        { 
-            id: 5, 
-            text: `${isSpanish ? 'Más de 1.6 años en la industria Tech' : '1.6+ Years in Tech'}`,
-            icon: Rocket, 
-            color: 'from-indigo-500 to-blue-500',
-            position: { bottom: '-7%', right: '-20%' },
-            mobilePosition: { bottom: '10px', right: '-30px' }
-        },
+        }
     ];
 
     return {
