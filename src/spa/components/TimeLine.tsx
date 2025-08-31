@@ -149,7 +149,7 @@ export const Timeline = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => scroll('left')}
-            className="absolute top-1/2 -translate-y-1/2 z-20 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm rounded-full p-3 border border-gray-600/50 transition-all duration-300 shadow-lg"
+            className="absolute bottom-[-5%] -translate-y-1/2 left-20 z-20 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm rounded-full p-3 border border-gray-600/50 transition-all duration-300 shadow-lg"
           >
             <ChevronLeft className="w-5 h-5 text-white" />
           </motion.button>
@@ -158,7 +158,7 @@ export const Timeline = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => scroll('right')}
-            className="absolute right-1 top-1/2 -translate-y-1/2 z-20 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm rounded-full p-3 border border-gray-600/50 transition-all duration-300 shadow-lg"
+            className="absolute right-20 bottom-[-5%] -translate-y-1/2 z-20 bg-gray-800/80 hover:bg-gray-700/80 backdrop-blur-sm rounded-full p-3 border border-gray-600/50 transition-all duration-300 shadow-lg"
           >
             <ChevronRight className="w-5 h-5 text-white" />
           </motion.button>
