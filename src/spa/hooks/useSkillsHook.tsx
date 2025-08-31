@@ -57,6 +57,7 @@ export const useSkillsHook = () => {
             skills: [
                 { name: 'HTML / CSS', icon: Box, level: defineSkillLevel.Expert, color: 'from-orange-500 to-red-500' },
                 { name: 'React', icon: Layers, level: defineSkillLevel.Expert, color: 'from-cyan-500 to-blue-500' },
+                { name: 'Astro', icon: Layers, level: defineSkillLevel.Intermediate, color: 'from-violet-500 to-gray-500' },
                 { name: 'Vue.js', icon: Layers, level: defineSkillLevel.Basic, color: 'from-green-500 to-green-500' },
                 { name: 'Tailwind CSS', icon: Palette, level: defineSkillLevel.Advanced, color: 'from-teal-500 to-cyan-500' },
                 { name: 'Bootstrap', icon: Palette, level: defineSkillLevel.Basic, color: 'from-violet-500 to-violet-500' },
