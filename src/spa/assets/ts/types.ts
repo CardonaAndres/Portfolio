@@ -25,7 +25,7 @@ export type ProjectSecondary = {
   technologies: string[];
   image: string;
   color: string;
-  github: string;
+  github?: string;
   demo?: string;
 }
 

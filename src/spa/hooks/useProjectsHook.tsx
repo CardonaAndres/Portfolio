@@ -180,7 +180,7 @@ export const useProjectsHook = () => {
       {
         id: 3,
         title: `${isSpanish ? 'Grupo' : 'Group'} Coactiva S.A.S`,
-        description: `${isSpanish ? 'Agencia líder en recuperación de cartera en Colombia y América Latina. La plataforma presenta sus servicios especializados en gestión de cartera vencida, destacando su cobertura regional, experiencia y enfoque tecnológico. El diseño se enfocó en la usabilidad, la confianza del usuario y la conversión de clientes potenciales.' : 'Leading debt recovery agency in Colombia and Latin America. The platform showcases their specialized services in delinquent portfolio management, highlighting their regional reach, experience, and technology-driven approach. The design focused on usability, user trust, and converting potential clients.'}`,
+        description: `${isSpanish ? 'Agencia líder en recuperación de cartera en Colombia y América Latina. La plataforma presenta sus servicios especializados en gestión de cartera vencida, destacando su cobertura regional, experiencia y enfoque tecnológico.' : 'Leading debt recovery agency in Colombia and Latin America. The platform showcases their specialized services in delinquent portfolio management, highlighting their regional reach, experience, and technology-driven approach.'}`,
         category: 'landing',
         technologies: ['TypeScript', 'React', 'Tailwind'],
         image: '/assets/imgs/projects/secondary/coactivasas.webp',
@@ -209,6 +209,16 @@ export const useProjectsHook = () => {
         color: 'purple-500',
         github: 'https://github.com/CardonaAndres/portafolio-cuidado-armonia',
         demo: 'https://servicios-cuidado-y-armonia.vercel.app/',
+      },
+      {
+        id: 6,
+        title: `Hanna's MakeUp`,
+        description: `${isSpanish ? 'Tienda en línea desarrollada en Shopify por requerimiento del cliente para la marca Hanna\'s Makeup, diseñada para ofrecer una experiencia de compra moderna, intuitiva y alineada con su identidad.' : 'Online store built in Shopify at the client’s request for the brand Hanna\'s Makeup, designed to provide a modern, intuitive shopping experience aligned with their brand identity.'}`,
+        category: 'web',
+        technologies: ['Shopify'],
+        image: '/assets/imgs/projects/secondary/hannas.webp',
+        color: 'gray-500',
+        demo: 'https://www.hannasmakeup.com/',
       }
     ];
 
