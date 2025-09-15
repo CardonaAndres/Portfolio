@@ -56,7 +56,6 @@ export type SkillLevel = 'Experto' | 'Avanzado' | 'Intermedio' | 'Básico' | 'Ex
 
 export interface TechSkill {
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
   level: SkillLevel;
   color: string;
 }
@@ -74,7 +73,7 @@ export interface SkillCategory {
 
 export interface TechSkill {
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
   level: SkillLevel;
   color: string;
+  imageUrl: string;
 }
