@@ -69,7 +69,7 @@ export const useSkillsHook = () => {
                     imageUrl: 'https://skillicons.dev/icons?i=react'
                 },
                 { 
-                    name: 'Next', 
+                    name: 'Next.js', 
                     level: defineSkillLevel.Intermediate, 
                     color: 'from-cyan-500 to-blue-500',
                     imageUrl: 'https://skillicons.dev/icons?i=next'
