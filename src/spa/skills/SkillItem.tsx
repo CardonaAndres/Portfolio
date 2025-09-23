@@ -30,30 +30,33 @@ export const SkillItem = ({
     onMouseLeave={onLeave}
     className="relative cursor-pointer"
   >
-    <div className={`relative px-3 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${
+    <div className={`relative p-2.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${
       hoveredSkill === `${categoryTitle}-${skill.name}` ? 'transform scale-105' : ''
     }`}>
-      <div className="flex items-center space-x-3">
+      {/* Vertical Layout */}
+      <div className="flex flex-col items-center text-center space-y-2">
         {/* Technology Image */}
         <div className="relative flex-shrink-0">
           <img 
             src={skill.imageUrl}
             alt={skill.name}
-            className="w-8 h-8 object-contain"
+            className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-all duration-300"
             style={{ 
               filter: hoveredSkill === `${categoryTitle}-${skill.name}` ? 'brightness(1.2)' : 'brightness(1)'
             }}
           />
         </div>
         
-        <div className="flex-1 min-w-0">
-          {/* Technology Name */}
-          <span className="text-sm font-medium text-white block truncate">
+        {/* Technology Name */}
+        <div className="w-full">
+          <h3 className="text-xs sm:text-sm font-medium text-white leading-tight break-words">
             {skill.name}
-          </span>
-          
-          {/* Level Badge */}
-          <span className={`inline-block text-xs px-2 py-0.5 mt-1 rounded-full bg-gradient-to-r ${levelColors[skill.level]} text-white font-medium`}>
+          </h3>
+        </div>
+        
+        {/* Level Badge */}
+        <div className="w-full flex justify-center">
+          <span className={`inline-block text-xs px-2 py-0.5 rounded-full bg-gradient-to-r ${levelColors[skill.level]} text-white font-medium whitespace-nowrap`}>
             {skill.level}
           </span>
         </div>
