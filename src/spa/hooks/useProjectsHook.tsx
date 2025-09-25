@@ -24,7 +24,7 @@ export const useProjectsHook = () => {
           teamSize: `1 ${isSpanish ? 'persona' : 'person'}`,
           impact: `${isSpanish ? 'Digitalización completa de procesos de SST, mejorando trazabilidad y cumplimiento legal.' : 'Full digitization of OHS processes, improving traceability and legal compliance.'}`,
           color: "from-teal-500 via-cyan-300 to-teal-100",
-          url : '',
+          url : 'https://sst.newstetic.com',
           github_url: 'https://github.com/CardonaAndres/NewStetic-SST-CLIENT',
           images_urls : [
               '/assets/imgs/projects/main/SstNS/img1.webp'
