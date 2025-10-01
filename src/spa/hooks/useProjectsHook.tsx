@@ -73,7 +73,7 @@ export const useProjectsHook = () => {
           teamSize: `2 ${isSpanish ? 'personas' : 'people'}`,
           impact: `${isSpanish ? 'Automatización del seguimiento de órdenes de compra, mejora en la comunicación con proveedores y optimización del control logístico.' : 'Automation of purchase order tracking, improved supplier communication, and optimized logistics control.'}`,
           color: "from-teal-500 via-red-400 to-red-200",
-          url: '',
+          url: 'https://buyorder.newstetic.com',
           github_url: 'https://github.com/CardonaAndres/BuyOrder-NewStetic',
           images_urls: [
             '/assets/imgs/projects/main/BuyOrderNS/img1.webp'
