@@ -29,7 +29,7 @@ export const TimelineCard = ({ item, index, isActive, onClick, horizontal = fals
           className="relative group cursor-pointer"
         >
           {/* Card */}
-          <div className="relative bg-gradient-to-br from-gray-900/80 to-black/60 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 min-h-[300px]">
+          <div className="relative bg-gradient-to-br from-gray-900/80 to-black/60 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
             {/* Header */}
             <div className="flex flex-col items-center text-center mb-4">
               <div className={`p-3 rounded-xl bg-gradient-to-r ${item.color} bg-opacity-20 mb-3`}>
@@ -46,7 +46,7 @@ export const TimelineCard = ({ item, index, isActive, onClick, horizontal = fals
                 )}
               </div>
 
-              <h3 className="text-lg font-semibold text-white mb-1 line-clamp-2">
+              <h3 className="text-lg font-semibold text-white mb-1">
                 {item.title}
               </h3>
               <p className="text-blue-400 font-medium mb-2 text-sm">{item.company}</p>
@@ -57,7 +57,7 @@ export const TimelineCard = ({ item, index, isActive, onClick, horizontal = fals
             </div>
 
             {/* Description */}
-            <p className="text-gray-300 text-sm mb-4 text-center line-clamp-3">
+            <p className="text-gray-300 text-sm mb-4 text-center flex-grow">
               {item.description}
             </p>
 

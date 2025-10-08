@@ -57,7 +57,7 @@ export const useTimelineHook = () => {
       title: `${isSpanish ? 'Especialización en Tecnologías Full Stack' : 'Full Stack Technologies Specialization'}`,
       company: `${isSpanish ? 'Autodidacta' : 'Self-taught'}`,
       location: 'Itagüí, Colombia',
-      date: `${isSpanish ? '2024' : '2024'}`,
+      date: `2024`,
       current: false,
       description: `${isSpanish ? 'Dominio completo del ecosistema JavaScript y tecnologías backend modernas' : 'Complete mastery of JavaScript ecosystem and modern backend technologies'}`,
       achievements: [
@@ -93,15 +93,15 @@ export const useTimelineHook = () => {
       title: `${isSpanish ? 'Desarrollador Fullstack' : 'Fullstack Developer'}`,
       company: 'New Stetic S.A',
       location: 'Medellín, Colombia',
-      date: '2025',
-      current: true,
+      date: '2025/04 - 2025/10',
+      current: false,
       description: `${isSpanish ? 'Desarrollo de aplicaciones web escalables y de alto rendimiento con arquitectura de microservicios' : 'Development of scalable and high-performance web applications with microservices architecture'}`,
       achievements: [
         `${isSpanish ? 'Desarrollé New Stetic SST - Sistema de gestión de Seguridad y Salud en el Trabajo con arquitectura de microservicios' : 'Developed New Stetic SST - Occupational Health and Safety management system with microservices architecture'}`,
         `${isSpanish ? 'Desarrollé BuyOrder NS - Sistema especializado en la gestión integral de Órdenes de Compra Nacionales (OCN) con arquitectura de microservicios' : 'Developed BuyOrder NS - Occupational Health and Safety management system with microservices architecture'}`,
       ],
       icon: Building2,
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-teal-400 to-teal-500'
     },
     {
       id: 6,
@@ -119,6 +119,19 @@ export const useTimelineHook = () => {
       ],
       icon: Award,
       color: 'from-yellow-500 to-amber-500'
+    },
+    {
+      id: 7,
+      type: 'work',
+      title: `${isSpanish ? 'Ingeniero de Software' : 'Software Engineer'}`,
+      company: 'PedBox S.A.S',
+      location: 'Itagüí, Colombia',
+      date: '2025',
+      current: true,
+      description: `${isSpanish ? 'Ingeniero de software enfocado en el desarrollo backend de aplicaciones web escalables, orientado a la calidad, y la eficiencia en cada solución.' : 'Software engineer focused on backend development of scalable web applications, committed to quality, security, and efficiency in every solution.'}`,
+      achievements: [],
+      icon: Code2,
+      color: 'from-purple-500 to-purple-500'
     },
   ];
 
