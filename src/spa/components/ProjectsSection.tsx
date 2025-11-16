@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Sparkles, ArrowLeft, ArrowRight } from 'lucide-react';
-import { ProjectCard } from '../projects/ProjectCard';
+import { Sparkles, MousePointerClick } from 'lucide-react';
+import { ProjectsGrid } from '../projects/ProjectsGrid';
 import { useProjectsHook } from '../hooks/useProjectsHook';
 import { useLanguage } from '@/core/context/LanguageContext';
 
@@ -9,40 +9,14 @@ export const ProjectsSection = () => {
   const { language } = useLanguage();
   const isSpanish = language === 'ES';  
   const { projects } = useProjectsHook();
-  const [activeProject, setActiveProject] = useState(0);
-  const [_, setHoveredTech] = useState<null | string>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
   const containerRef = useRef(null);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
   const parallaxY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
-  const nextProject = () => setActiveProject((prev) => (prev + 1) % projects.length);
-  const prevProject = () => setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
-  
-  useEffect(() => {
-    const handleKeyPress = (e : KeyboardEvent) => {
-      if (e.key === 'ArrowRight') nextProject();
-      if (e.key === 'ArrowLeft') prevProject();
-    };
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, []);
-
-  // Detectar si es desktop
-  useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 768 && !('ontouchstart' in window));
-    };
-    checkDesktop();
-    window.addEventListener('resize', checkDesktop);
-    return () => window.removeEventListener('resize', checkDesktop);
-  }, []);
-
-  const currentProject = projects[activeProject];
 
   return (
     <section ref={containerRef} className="relative min-h-screen bg-black overflow-hidden py-20">
@@ -74,100 +48,52 @@ export const ProjectsSection = () => {
             className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-sm mb-6"
           >
             <Sparkles className="w-4 h-4 text-blue-400" />
-            <span className="text-sm text-blue-400 font-medium">{ isSpanish ? 'Proyectos Destacados' : 'Featured Projects' }</span>
+            <span className="text-sm text-blue-400 font-medium">
+              {isSpanish ? 'Proyectos Destacados' : 'Featured Projects'}
+            </span>
           </motion.div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
-            { isSpanish ? 'Mi' : 'My' } <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">{ isSpanish ? 'Trabajo' : 'Work' }</span>
+            {isSpanish ? 'Mi' : 'My'}{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+              {isSpanish ? 'Trabajo' : 'Work'}
+            </span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            { isSpanish ? 'Explora mis proyectos más recientes y descubre cómo transformo ideas en soluciones tecnológicas innovadoras' : 'Explore my latest projects and see how I turn ideas into innovative tech solutions' }
+            {isSpanish 
+              ? 'Explora mis proyectos más recientes y descubre cómo transformo ideas en soluciones tecnológicas innovadoras' 
+              : 'Explore my latest projects and see how I turn ideas into innovative tech solutions'}
           </p>
-        </motion.div>
 
-        {/* Keyboard Navigation Hint - Solo Desktop */}
-        {isDesktop && (
+          {/* Call to Action - Solo Desktop */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="flex items-center justify-center mb-8"
+            className="hidden lg:flex items-center justify-center gap-2 mt-8"
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="inline-flex items-center space-x-3 px-4 py-2 rounded-lg bg-gray-800/50 border border-gray-700/50 backdrop-blur-sm"
+              animate={{ 
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             >
-              <span className="text-gray-400 text-sm">{ isSpanish ? 'Puedes usar las teclas para navegar:' : 'You can use the keys to navigate:' }</span>
-              <div className="flex items-center space-x-2">
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="flex items-center space-x-1 px-2 py-1 bg-gray-700/50 rounded border border-gray-600/50"
-                >
-                  <ArrowLeft className="w-3 h-3 text-gray-300" />
-                  <span className="text-xs text-gray-300">←</span>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="flex items-center space-x-1 px-2 py-1 bg-gray-700/50 rounded border border-gray-600/50"
-                >
-                  <ArrowRight className="w-3 h-3 text-gray-300" />
-                  <span className="text-xs text-gray-300">→</span>
-                </motion.div>
-              </div>
+              <MousePointerClick className="w-5 h-5 text-blue-400" />
             </motion.div>
+            <p className="text-gray-300 text-base font-medium">
+              {isSpanish 
+                ? 'Haz clic en cualquier proyecto para descubrir los detalles completos y el impacto generado' 
+                : 'Click on any project to discover the full details and impact achieved'}
+            </p>
           </motion.div>
-        )}
+        </motion.div>
 
-        {/* Main Project Display */}
-        <ProjectCard 
-            setHoveredTech={setHoveredTech} 
-            currentProject={currentProject}
-            activeProject={activeProject}
-            projects={projects}
-        />
-
-        <div className="absolute -bottom-15 left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={prevProject}
-            aria-label='Previous Project'
-            className="p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </motion.button>
-
-          {/* Progress Indicators */}
-          <div className="flex space-x-2">
-            {projects.map((_, index) => (
-              <motion.button
-                key={index}
-                ariala-label={`Project Indicator ${index + 1}`}
-                whileHover={{ scale: 1.2 }}
-                aria-label={`Select Project ${index + 1}`}
-                onClick={() => setActiveProject(index)}
-                className={`h-2 rounded-full transition-all duration-300 mx-3 ${
-                  index === activeProject 
-                    ? 'w-8 bg-blue-500' 
-                    : 'w-2 bg-gray-600 hover:bg-gray-500'
-                }`}
-              />
-            ))}
-          </div>
-
-          <motion.button
-          aria-label='Next Project'
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={nextProject}
-            className="p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </motion.button>
-        </div>
+        {/* Bento Grid de proyectos */}
+        <ProjectsGrid projects={projects} language={language} />
       </div>
     </section>
   );

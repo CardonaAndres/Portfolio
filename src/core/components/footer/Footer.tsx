@@ -4,23 +4,23 @@ import { Mail, Phone, Code2, Sparkles, Heart, Coffee, Zap, Terminal, Rocket, Ext
 import { useHeroHook } from '@/spa/hooks/useHeroHook';
 import { useLanguage } from '@/core/context/LanguageContext';
 
+const currentYear = new Date().getFullYear();
+
+const skills = [
+  'JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 
+  'Express', 'NestJS', 'Python', 'FastAPI',
+  'Docker', 'SQL', 'MongoDB', 'Git', 'Laravel',
+  'PHP', 'Tailwind CSS'
+];
+
 export const Footer = () => {
   const isSpanish = useLanguage().language === 'ES';
   const { socialMediaLinks : socialLinks } = useHeroHook();
   const [hoveredSocial, setHoveredSocial] = useState<number | null>(null);
-  const currentYear = new Date().getFullYear();
 
   const quickLinks = [
     { label: isSpanish ? 'Sobre mí' : 'About Me', href: '#about', icon: Code2 },
-    { label: isSpanish ? 'Proyectos' : 'Projects', href: '#projects', icon: Rocket },
-    { label: isSpanish ? 'Contacto' : 'Contact', href: '#contact', icon: Mail },
-  ];
-
-  const skills = [
-    'JavaScript', 'TypeScript', 'React', 'Node.js', 
-    'Express', 'NestJS', 'Python', 'FastAPI',
-    'Docker', 'SQL', 'MongoDB', 'Git', 'Laravel',
-    'PHP', 'Tailwind CSS'
+    { label: isSpanish ? 'Proyectos' : 'Projects', href: '#projects', icon: Rocket }
   ];
   
   return (

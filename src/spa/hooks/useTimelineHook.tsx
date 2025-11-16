@@ -15,7 +15,7 @@ export const useTimelineHook = () => {
 
   // Datos del timeline
   const timelineData: TimelineItem[] = [
-      {
+    {
       id: 1,
       type: 'education',
       title: `${isSpanish ? 'Análisista y Desarrollador de Software' : 'Software Analysis and Development Technologist'}`,
@@ -95,10 +95,19 @@ export const useTimelineHook = () => {
       location: 'Medellín, Colombia',
       date: '2025/04 - 2025/10',
       current: false,
-      description: `${isSpanish ? 'Desarrollo de aplicaciones web escalables y de alto rendimiento con arquitectura de microservicios' : 'Development of scalable and high-performance web applications with microservices architecture'}`,
+      description: `${isSpanish
+        ? 'Desarrollo de aplicaciones web escalables y de alto rendimiento utilizando arquitectura de microservicios.'
+        : 'Development of scalable, high-performance web applications using microservices architecture.'
+        }`,
       achievements: [
-        `${isSpanish ? 'Desarrollé New Stetic SST - Sistema de gestión de Seguridad y Salud en el Trabajo con arquitectura de microservicios' : 'Developed New Stetic SST - Occupational Health and Safety management system with microservices architecture'}`,
-        `${isSpanish ? 'Desarrollé BuyOrder NS - Sistema especializado en la gestión integral de Órdenes de Compra Nacionales (OCN) con arquitectura de microservicios' : 'Developed BuyOrder NS - Occupational Health and Safety management system with microservices architecture'}`,
+        `${isSpanish
+          ? 'Desarrollé New Stetic SST: Sistema de gestión de Seguridad y Salud en el Trabajo basado en microservicios.'
+          : 'Developed New Stetic SST: Occupational Health and Safety management system built with a microservices architecture.'
+        }`,
+        `${isSpanish
+          ? 'Desarrollé BuyOrder NS: Plataforma para la gestión integral de Órdenes de Compra Nacionales (OCN), con seguimiento, calificación de proveedores y automatización de procesos.'
+          : 'Developed BuyOrder NS: Platform for comprehensive National Purchase Order (NPO) management, including tracking, supplier rating, and process automation.'
+        }`,
       ],
       icon: Building2,
       color: 'from-teal-400 to-teal-500'
@@ -129,7 +138,11 @@ export const useTimelineHook = () => {
       date: '2025',
       current: true,
       description: `${isSpanish ? 'Ingeniero de software enfocado en el desarrollo backend de aplicaciones web escalables, orientado a la calidad, y la eficiencia en cada solución.' : 'Software engineer focused on backend development of scalable web applications, committed to quality, security, and efficiency in every solution.'}`,
-      achievements: [],
+      achievements: [
+        `${isSpanish ? 'Agendarte: Rediseñé la interfaz optimizando la experiencia de usuario y fortaleciendo la identidad visual de marca, además de implementar integraciones de correo electrónico y mensajería WhatsApp' : 'Agendarte: Redesigned the interface optimizing user experience and strengthening brand visual identity, plus implemented email and WhatsApp messaging integrations'}`,
+        `${isSpanish ? 'PedBox: Dirigí la transformación arquitectónica completa del sistema, migrando la stack tecnológica de Node.js vanilla a NestJS con React, logrando mejoras significativas en rendimiento y mantenibilidad' : 'PedBox: Led the complete architectural transformation of the system, migrating the tech stack from vanilla Node.js to NestJS with React, achieving significant improvements in performance and maintainability'}`,
+        `${isSpanish ? 'CIPA – Acuerdos: Construí el frontend completo usando React/TypeScript y contribuí activamente en el backend desarrollando módulos nuevos y optimizando los existentes, incrementando el rendimiento general en 60%' : 'CIPA – Agreements: Built the complete frontend using React/TypeScript and actively contributed to the backend by developing new modules and optimizing existing ones, increasing overall performance by 60%'}`
+      ],
       icon: Code2,
       color: 'from-purple-500 to-purple-500'
     },
@@ -140,4 +153,3 @@ export const useTimelineHook = () => {
     timelineData
   }
 }
-
